@@ -1,0 +1,53 @@
+<app-dashboard></app-dashboard>
+<div class="edit">
+
+
+
+<div class="justify-content-centre ">
+  <div class="registration-form">
+    <div class="card">
+      <div class="card-header heading">
+        <h2>Add New Product</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+          <div class="container-fluid">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="display_name" formControlName="name" placeholder="Product Name">
+              
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="display_name" formControlName="consumer" placeholder="consumer Name">
+              
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" type="number" formControlName="p_cost" placeholder="Product Cost">
+             </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" type="number" formControlName="s_cost" placeholder="Shipping Cost">
+             
+            </div>
+           
+          <div class="form-group">
+            <input type="text" class="form-control input-lg"  type="text" formControlName="status" placeholder="status">
+        </div>
+      
+
+          </div>
+          <div class="row final">
+            <div class="col-md-1">
+              <button type="submit" style="margin-left:50%" id="submitbtn1" class="btn btn-primary">Update</button>
+            </div>
+
+
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+  </div>
+<!-- 
+  [disabled]="!registrationForm.valid" -->

@@ -1,0 +1,30 @@
+
+
+<div class="sidebar">
+  <a routerLink="/dashboard"><i class="fa fa-fw fa-home"></i> Dashboard</a><br>
+  <a class="dropdown-btn ">Manage Users
+    <i class="fa fa-caret-down"></i>
+   </a>
+  <div class="dropdown-container">
+    <a routerLink="/dashboard/addUsers">Add Users</a><br>
+
+    <a routerLink="/dashboard/listUsers">List Users</a><br>
+    
+  </div><br>
+   <a class="dropdown-btn ">Manage Products
+    <i class="fa fa-caret-down"></i>
+   </a>
+  <div class="dropdown-container">
+    <a routerLink="/dashboard/addProduct">Add Product</a><br>
+
+    <a routerLink="/dashboard/listProduct">List Product</a><br>
+    
+  </div><br>
+  <a routerLink="#contact"><i class="fa fa-fw fa-envelope"></i> Mangae Files</a><br>
+  <a (click)="logout()"><i class="fa fa-fw fa-logout btn" ></i> Logout</a>
+</div>
+
+<!-- Page content -->
+<div>
+  <!-- <h2><i>WElcome to dashboard</i></h2> -->
+</div>

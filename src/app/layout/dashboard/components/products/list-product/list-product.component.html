@@ -1,0 +1,28 @@
+<app-dashboard></app-dashboard>
+<div class="listing">
+<h1>Product Listing</h1>
+<br>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Consumer</th>
+      <th scope="col">Product Cost</th>
+      <th scope="col">Shipping Cost</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.consumer}}</td>
+      <td>{{product.p_cost}}</td>
+      <td>{{product.s_cost}}</td>
+      <td>{{product.status}}</td>
+      <td><button class="btn btn-primary" [routerLink]="['/dashboard/edit',product._id]">Edit</button>/<button class="btn btn-danger" (click)="delete(product._id)">Delete</button></td>
+   
+    </tr>
+ 
+  </tbody>
+</table>
+</div>

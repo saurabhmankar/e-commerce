@@ -1,0 +1,113 @@
+<div class="justify-content-centre ">
+    <div class="registration-form">
+        <div class="card">
+            <div class="card-header heading">
+              <h2>Registration Form</h2>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" >
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                     <input type="text" class="form-control input-lg" formControlName="first_name"  placeholder="First Name" autofocus>
+                                     <div *ngIf="registrationForm.controls['first_name'].touched && !registrationForm.controls['first_name'].valid" class="cross-validation-error-message alert alert-danger">  
+                                        <span *ngIf="registrationForm.controls['first_name'].hasError('required') ">  
+                                            First name is required  
+                                            </span>   
+                                            <span *ngIf="registrationForm.controls['first_name'].hasError('maxlength') ">  
+                                            max length is 15  
+                                        </span>    </div>                                 
+                                 
+                                  </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control input-lg" formControlName="last_name" placeholder="Last Name" >
+                                    <div *ngIf="registrationForm.controls['first_name'].touched && !registrationForm.controls['last_name'].valid" class="cross-validation-error-message alert alert-danger">  
+                                        <span *ngIf="registrationForm.controls['last_name'].hasError('required') ">  
+                                            Last name is required  
+                                            </span>   
+                                            <span *ngIf="registrationForm.controls['last_name'].hasError('maxlength') ">  
+                                            max length is 15  
+                                        </span>    </div>  
+                                
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg"  id="display_name" formControlName="display_name" placeholder="Display Name" >
+                            <div *ngIf="registrationForm.controls['display_name'].touched && !registrationForm.controls['display_name'].valid" class="cross-validation-error-message alert alert-danger">  
+                                <span *ngIf="registrationForm.controls['display_name'].hasError('required') ">  
+                                    Display name is required  
+                                    </span>   
+                                    <span *ngIf="registrationForm.controls['display_name'].hasError('maxlength') ">  
+                                    max length is 15 
+                                </span>    </div>  
+                        
+                          </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control input-lg" formControlName="email_address" placeholder="Email Address" >
+                            <div *ngIf="registrationForm.controls['email_address'].touched && !registrationForm.controls['email_address'].valid" class="cross-validation-error-message alert alert-danger">  
+                                <span *ngIf="registrationForm.controls['email_address'].hasError('required') ">  
+                                    Email is required  
+                                </span>
+                                <span *ngIf="registrationForm.controls['email_address'].hasError('pattern') ">  
+                                  Invalid email
+                                </span> 
+                              </div> 
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                   <input type="password" class="form-control input-lg"  id="Password" formControlName="Password" placeholder="Password">
+                                   <div *ngIf="registrationForm.controls['Password'].touched && !registrationForm.controls['Password'].valid" class="cross-validation-error-message alert alert-danger">  
+                                      <span *ngIf="registrationForm.controls['Password'].hasError('required') ">  
+                                          Password is required  
+                                      </span>
+                                     </div>                            
+                                </div>
+                             </div>
+                            <!-- <div class="col-md-6">
+                                <div class="form-group">
+                                   <input type="password" class="form-control input-lg"   formControlName="confirm_password" placeholder="Confirm Password" >
+                                   <div *ngIf="registrationForm.controls['confirm_password'].touched && !registrationForm.controls['confirm_password'].valid" class="cross-validation-error-message alert alert-danger">  
+                                      <span *ngIf="registrationForm.controls['confirm_password'].hasError('required') ">  
+                                        Confirm  Password is required  
+                                      </span>
+                                     </div>                         
+                              
+                                  </div>
+                           </div> -->
+                        </div>
+                        <div class="row">
+                            <div class=" col-md-4">
+                                <span class="button-checkbox">
+                                    <button type="button" class="btn">
+                                        <input type="checkbox"  id="t_and_c" class="hidden" value="1">I Agree</button>
+                                 </span>
+                            </div>
+                            <div class="col-md-8">
+                                By clicking
+                                <strong class="label label-primary">Register</strong>, you agree to the
+                                <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
+                            </div>
+                        </div>
+                        <div class="row final">
+                            <div class="col-md-1">
+                                <button type="submit"  style="margin-left:25%" id="submitbtn1" class="btn btn-primary">Register</button>
+                            </div>
+                            <!-- <div class="col-md-2">
+                              <button type="button"  style="margin-left:50%" routerLink="/login" class="btn btn-success" >Login</button>
+                          </div> -->
+                           
+                        </div>
+                    </div>
+                  
+                </form>
+            
+            </div>
+        </div>
+    </div>
+  
+    <!-- [disabled]="!registrationForm.valid" -->
