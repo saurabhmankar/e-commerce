@@ -19,7 +19,7 @@ products:any;
   
         this.product.listProduct().subscribe(res => {
           this.products = res;
-          console.log("games",this.products);
+          console.log("products",this.products);
         });
       }
 

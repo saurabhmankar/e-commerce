@@ -32,17 +32,17 @@
 <header>
   <div class="container-fluid">
       <div class="row">
-          <img src="/assets/images/backg1.jpg" alt="'/">
+          <img src="/assets/images/backg.jpg" alt="'/">
           <div class="content">
               <h3>
-                  <b>U&P Management</b>
+                  <b>ConFusion</b>
               </h3>
 
               <nav>
                   <ul>
                       <li>
                           <a href="#">
-                              <b>Blog</b>
+                              <b>Menu</b>
                           </a>
                       </li>
                       <li>
@@ -85,7 +85,7 @@
   <div class="content-text">
       <div class="col-md-offset-2">
           <h2>
-              <b><i>Welcome to U&P Management Portal</i>.</b>
+              <b><i>Welcome to ConFusion</i>.</b>
           </h2>
          
       </div>
@@ -114,30 +114,19 @@
       <div class="container-fluid content">
         <div class="row">
           <div class="form-group">
-            <input type="text" class="form-control input-lg" id="email_address" formControlName="email" placeholder="Email Address" required>
-            <div *ngIf="loginForm.controls['email'].touched && !loginForm.controls['email'].valid" class="cross-validation-error-message alert alert-danger">  
-              <span *ngIf="loginForm.controls['email'].hasError('required') ">  
-                  Email is required  
-                  </span>   
-             </div>
+            <input type="text" class="form-control input-lg" id="email_address" formControlName="email_address" placeholder="Email Address">
           </div>
-          
         </div>
         <div class="row">
           <div class="form-group">
-            <input type="password" class="form-control input-lg" maxlength="15" id="Password" formControlName="password" placeholder="Password" required>
-            <div *ngIf="loginForm.controls['password'].touched && !loginForm.controls['password'].valid" class="cross-validation-error-message alert alert-danger">  
-              <span *ngIf="loginForm.controls['password'].hasError('required') ">  
-                  Password is required  
-                  </span>   
-             </div>
+            <input type="password" class="form-control input-lg" maxlength="15" id="Password" formControlName="Password" placeholder="Password">
           </div>
         </div>
-       <small> <a routerLink="/login/forgetPassword">Forget Password?</a></small>
+       <small> <a routerLink="/login/forgetPassword">Forget Password???</a></small>
       
         <div class="row">
           <div class="col-md-2">
-          <button type="submit" style="margin-left:10%" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
+          <button type="submit" style="margin-left:10%" class="btn btn-success">Login</button>
 
         </div>
        

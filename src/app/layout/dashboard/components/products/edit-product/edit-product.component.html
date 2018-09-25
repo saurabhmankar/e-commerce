@@ -17,7 +17,7 @@
               
             </div>
             <div class="form-group">
-              <input type="text" class="form-control input-lg" id="display_name" formControlName="consumer" placeholder="consumer Name">
+              <input type="text" class="form-control input-lg" id="display_name" formControlName="description" placeholder="Product Description">
               
             </div>
             <div class="form-group">
@@ -36,7 +36,7 @@
           </div>
           <div class="row final">
             <div class="col-md-1">
-              <button type="submit" style="margin-left:50%" id="submitbtn1" class="btn btn-primary">Update</button>
+              <button type="submit" style="margin-left:50%" id="submitbtn1" class="btn btn-primary"[disabled]="!updateForm.valid" >Update</button>
             </div>
 
 

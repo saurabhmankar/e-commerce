@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
       "first_name": new FormControl('', [Validators.required, Validators.maxLength(15)]),
       "last_name": new FormControl('', [Validators.required, Validators.maxLength(15)]),
       "display_name": new FormControl('', [Validators.required, Validators.maxLength(20)]),
-      "email_address": new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])),
-      "Password": new FormControl('', Validators.required),
+      "email": new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])),
+      "password": new FormControl('', Validators.required),
       // "confirm_password": new FormControl(''),
 
     })

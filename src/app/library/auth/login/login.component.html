@@ -47,12 +47,12 @@
                         
                           </div>
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg" formControlName="email_address" placeholder="Email Address" >
-                            <div *ngIf="registrationForm.controls['email_address'].touched && !registrationForm.controls['email_address'].valid" class="cross-validation-error-message alert alert-danger">  
-                                <span *ngIf="registrationForm.controls['email_address'].hasError('required') ">  
+                            <input type="text" class="form-control input-lg" formControlName="email" placeholder="Email Address" >
+                            <div *ngIf="registrationForm.controls['email'].touched && !registrationForm.controls['email'].valid" class="cross-validation-error-message alert alert-danger">  
+                                <span *ngIf="registrationForm.controls['email'].hasError('required') ">  
                                     Email is required  
                                 </span>
-                                <span *ngIf="registrationForm.controls['email_address'].hasError('pattern') ">  
+                                <span *ngIf="registrationForm.controls['email'].hasError('pattern') ">  
                                   Invalid email
                                 </span> 
                               </div> 
@@ -60,9 +60,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   <input type="password" class="form-control input-lg"  id="Password" formControlName="Password" placeholder="Password">
-                                   <div *ngIf="registrationForm.controls['Password'].touched && !registrationForm.controls['Password'].valid" class="cross-validation-error-message alert alert-danger">  
-                                      <span *ngIf="registrationForm.controls['Password'].hasError('required') ">  
+                                   <input type="password" class="form-control input-lg"  id="Password" formControlName="password" placeholder="Password">
+                                   <div *ngIf="registrationForm.controls['password'].touched && !registrationForm.controls['password'].valid" class="cross-validation-error-message alert alert-danger">  
+                                      <span *ngIf="registrationForm.controls['password'].hasError('required') ">  
                                           Password is required  
                                       </span>
                                      </div>                            
@@ -95,7 +95,7 @@
                         </div>
                         <div class="row final">
                             <div class="col-md-1">
-                                <button type="submit"  style="margin-left:25%" id="submitbtn1" class="btn btn-primary">Register</button>
+                                <button type="submit"  style="margin-left:25%" id="submitbtn1" class="btn btn-primary" [disabled]="!registrationForm.valid">Register</button>
                             </div>
                             <!-- <div class="col-md-2">
                               <button type="button"  style="margin-left:50%" routerLink="/login" class="btn btn-success" >Login</button>

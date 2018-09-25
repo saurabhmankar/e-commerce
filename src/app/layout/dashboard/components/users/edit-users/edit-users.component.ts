@@ -1,6 +1,6 @@
 import { UsersService } from './../../../services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl,Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,9 +13,12 @@ export class EditUsersComponent implements OnInit {
 constructor(private route:ActivatedRoute,private user:UsersService, private router: Router){}
   ngOnInit(){
   this.updateForm = new FormGroup({
-    "name": new FormControl(''),
-    "lastname": new FormControl(''),
-    "email": new FormControl(''),
+    "name": new FormControl('',[ 
+      Validators.required]),
+    "lastname": new FormControl('',[ 
+      Validators.required]),
+    "email": new FormControl('',[ 
+      Validators.required]),
    
     // "confirm_password": new FormControl(''),
 

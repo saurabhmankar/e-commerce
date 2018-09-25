@@ -18,11 +18,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup({
       
-      "email_address" : new FormControl('',[ 
+      "email" : new FormControl('',[ 
         Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$') 
     ]),
-      "Password" : new FormControl('',),
+      "password" : new FormControl('',[ 
+        Validators.required])
      
         
       })
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
   onLogin(){
     console.log(this.loginForm.value)
     this.auth.login(this.loginForm.value).subscribe(res =>{
-      var token=res;
+      var token=res;//get token here...
      localStorage.setItem('token',token);
      if(localStorage){
        this.router.navigate(['/dashboard'])

@@ -19,18 +19,20 @@ export class ListUsersComponent implements OnInit {
   
         this.user.listUsers().subscribe(res => {
           this.users = res;
-          console.log("games",this.users);
+          console.log("users",this.users);
         });
       }
 
       delete(id){
         this.user.deleteUsers(id).subscribe(res => {
-          console.log('Deleted');
+          //console.log('Deleted');
+          this.router.navigate(['/dashboard/listUsers']);
 
         
-        
+          
         });
-        this.router.navigate(['/dashboard/listUsers'])
+        
+        
       }
 
 }

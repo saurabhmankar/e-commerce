@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../../services/product.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl,Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,11 +13,11 @@ export class EditProductComponent implements OnInit {
   constructor(private product:ProductService,private router:Router,private route:ActivatedRoute ){ }
 ngOnInit(){
   this.updateForm = new FormGroup({
-    "name": new FormControl(''),
-    "consumer": new FormControl(''),
-    "p_cost": new FormControl(''),
-    "s_cost": new FormControl(''),
-    "status":new FormControl('')
+    "name": new FormControl('',[Validators.required]),
+    "description": new FormControl('',[Validators.required]),
+    "p_cost": new FormControl('',[Validators.required]),
+    "s_cost": new FormControl('',[Validators.required]),
+    "status":new FormControl('',[Validators.required])
     
     // "confirm_password": new FormControl(''),
 

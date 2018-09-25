@@ -10,12 +10,12 @@ export class AuthService {
 
   signUp(data:any ): Observable<any> {
     console.log("data",data)
-   return this.http.post('http://localhost:3000/api/signup',data);
+   return this.http.post('http://localhost:10010/register',data);
  }
 
  login(data:any):Observable<any>{
   console.log("fbrhfbnj",data);
-  return this.http.post('http://localhost:3000/api/login',data)
+  return this.http.post('http://localhost:10010/login',data);
 }
 
 getToken() {
