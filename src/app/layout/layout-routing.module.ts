@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { TooltipModule } from 'primeng/tooltip';
+
 
 const routes: Routes = [
   {
@@ -13,6 +15,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    TooltipModule,
     RouterModule.forChild(routes)
   ],
   exports: [

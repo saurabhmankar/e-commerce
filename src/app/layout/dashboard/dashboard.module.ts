@@ -12,11 +12,12 @@ import { CommonModule } from '@angular/common';
 import { ListProductComponent } from './components/products/list-product/list-product.component';
 import { ProductService } from './services/product.service';
 import { UsersService } from './services/users.service';
+import {TooltipModule} from 'primeng/tooltip';
 
 
 @NgModule({
   imports: [
-    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule],
+    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule,TooltipModule],
     providers:[ProductService,UsersService],
   declarations: [DashboardComponent,AddProductComponent,AddUsersComponent,EditProductComponent, ListProductComponent,ListUsersComponent, EditUsersComponent]
 })

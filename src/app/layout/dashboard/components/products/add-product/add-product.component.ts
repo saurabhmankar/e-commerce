@@ -1,7 +1,10 @@
-import { Router } from '@angular/router';
-import { FormControl, FormGroup,Validators} from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../services/product.service';
+ import { Router } from '@angular/router';
+ import { FormControl, FormGroup,Validators} from '@angular/forms';
+ import { Component, OnInit } from '@angular/core';
+ import { ProductService } from '../../../services/product.service';
+
+
+
 
 @Component({
   selector: 'app-add-product',
@@ -15,6 +18,7 @@ productForm:FormGroup
   constructor(private product:ProductService,private router:Router) { }
 ngOnInit(){
   this.productForm = new FormGroup({
+    "productImage": new FormControl(''),
     "name": new FormControl('',[Validators.required]),
     "description": new FormControl('',[Validators.required]),
     "p_cost": new FormControl('',[Validators.required]),
@@ -23,7 +27,8 @@ ngOnInit(){
     // "confirm_password": new FormControl(''),
 
   })
-
+  
+  
 }
 handleFileInput(file:FileList){
   this.fileToUpload =file.item(0);
@@ -34,10 +39,13 @@ handleFileInput(file:FileList){
     this.imageUrl=event.target.result;
 
   }
-  reader.readAsDataURL(this.fileToUpload);
+      reader.readAsDataURL(this.fileToUpload);
+      console.log("Image:"+this.fileToUpload.name);
+    
 }
 onSubmit() {
   console.log(this.productForm.value);
+  console.log(this.fileToUpload);
   this.product.addProduct(this.productForm.value)
     .subscribe((res: any) => {
       res = res.data;

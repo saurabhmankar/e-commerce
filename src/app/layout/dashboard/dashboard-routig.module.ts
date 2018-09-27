@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { EditProductComponent } from './components/products/edit-product/edit-product.component';
 import { ListProductComponent } from './components/products/list-product/list-product.component';
+import {TooltipModule} from 'primeng/tooltip';
 
 const routes :Routes =[
   {path:'', component:DashboardComponent},
@@ -23,6 +24,7 @@ const routes :Routes =[
 @NgModule({
   imports: [
     CommonModule,
+    TooltipModule,
     RouterModule.forChild(routes)
   ],
   exports:[
