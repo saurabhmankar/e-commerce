@@ -2,3 +2,12 @@
     margin-left: 12.5%;
     margin-right: 2%
 }
+.list th{
+    color: red;
+}
+.list td{
+    color: rgb(15, 15, 14);
+}
+.list table{
+    background:bisque;
+}
