@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastModule} from '../../node_modules/primeng/toast';
 import {MessageService} from '../../node_modules/primeng/api';
+import { SharedModule } from './library/shared/shared.module';
 
 
 @NgModule({
@@ -31,6 +32,8 @@ import {MessageService} from '../../node_modules/primeng/api';
     HttpClientModule,
     ToastModule,
   BrowserAnimationsModule,
+  SharedModule
+
     
   ],
   providers: [AuthService,AuthGuardService,MessageService,

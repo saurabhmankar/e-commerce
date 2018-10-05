@@ -18,7 +18,9 @@ import { UsersService } from './services/users.service';
 import {TooltipModule} from 'primeng/tooltip';
 import { BlogService } from './services/blog.service';
 import {CardModule} from 'primeng/card';
-import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
+import { NgxCroppieModule } from 'ngx-croppie';
+import {EditorModule} from 'primeng/editor';
+
 
 
 
@@ -26,8 +28,8 @@ import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
 
 @NgModule({
   imports: [
-    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule,TooltipModule,CardModule],
+    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule,TooltipModule,CardModule,NgxCroppieModule,EditorModule],
     providers:[ProductService,UsersService,BlogService],
-  declarations: [DashboardComponent,AddProductComponent,AddUsersComponent,EditProductComponent, ListProductComponent,ListUsersComponent, EditUsersComponent,AddBlogComponent,ListBlogComponent,EditBlogComponent,ImageCropperComponent]
+  declarations: [DashboardComponent,AddProductComponent,AddUsersComponent,EditProductComponent, ListProductComponent,ListUsersComponent, EditUsersComponent,AddBlogComponent,ListBlogComponent,EditBlogComponent]
 })
 export class DashboardModule { }

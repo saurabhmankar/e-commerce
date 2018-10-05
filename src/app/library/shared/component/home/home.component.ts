@@ -55,11 +55,15 @@ clear() {
   onLogin(){
     console.log(this.loginForm.value)
     this.auth.login(this.loginForm.value).subscribe(res =>{
-      var user=res[0].first_name;//get token here...
+      var user=res[0].first_name;
+      var role=res[0].role;
+      console.log(role);
      localStorage.setItem('token',user);
      this.success();
-     if(localStorage){
-       this.router.navigate(['/dashboard'])
+     if(role=="user"){
+       this.router.navigate(['/userdashboard/userdashboard'])
+     }else if(role=="admin"){
+      this.router.navigate(['/dashboard']) 
      }
     })
   }

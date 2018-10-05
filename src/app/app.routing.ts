@@ -36,6 +36,9 @@ const routes: Routes = [
   {
     path: 'dashboard',loadChildren:'./layout/layout.module#LayoutModule',canActivate: [AuthGuardService]
   },
+  {
+    path: 'userdashboard',loadChildren:'./layout/layout.module#LayoutModule',canActivate: [AuthGuardService]
+  },
  
 
 ]

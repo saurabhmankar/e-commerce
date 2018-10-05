@@ -1,0 +1,20 @@
+.listing{
+    margin-left:12.5%;margin-right: 2%
+}
+.listing th{
+    color: red;
+}
+.listing img{
+    border: 2px royalblue solid;
+}
+.listing td{
+    color: greenyellow;
+}
+
+.product{
+    margin-left:15.5%;margin-right: 2%
+
+}
+.product p-card{
+    background: lightcoral solid;
+}

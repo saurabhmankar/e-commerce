@@ -29,3 +29,8 @@
     background-color: #4CAF50;
     color: white;
 }
+.ngx-croppie{
+position: relative;
+top:5px;
+bottom:5px;
+}

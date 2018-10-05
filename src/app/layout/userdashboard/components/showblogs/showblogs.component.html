@@ -1,0 +1,20 @@
+<app-userdashboard></app-userdashboard>
+<div class="listing">
+<div class="header">
+  <h2>{{blog.title}}</h2>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card" *ngFor="let blog of blogs">
+      <h2>{{blog.title}}</h2>
+      <h5>{{blog.description}}</h5>
+      <div class="fakeimg" style="height:200px;"><img src="{{blog.BlogImage}}" width="auto" height="100px"></div>
+      <p>Some text..</p>
+      <button class="btn btn-md btn-success">Like</button>
+      <button class="btn btn-md btn-warning">Comment</button>
+    </div>
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+</div>

@@ -9,6 +9,11 @@ const routes: Routes = [
     path: '',
    loadChildren: './dashboard/dashboard.module#DashboardModule' }
       
+  ,
+  {
+    path: 'userdashboard',
+   loadChildren: './userdashboard/userdashboard.module#UserdashboardModule' }
+      
   
 
 ]

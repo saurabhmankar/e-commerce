@@ -11,16 +11,30 @@
           <div class="container-fluid">
             <div class="form-group">
               <label>Select Blog Image:</label>
-            <img [src]="imageUrl" style="width:500px;height:400px" >
+            <!-- <img [src]="imageUrl" style="width:500px;height:400px" >
             <input type="file" #fileInput (change)="handleFileInput($event.target.files)" id="BlogImage">
-            
+             -->
+             <div>
+              <img [src]="imageToDisplay" alt="" />
+            </div>
+            <div>
+              <ngx-croppie *ngIf="croppieImage" #ngxCroppie [croppieOptions]="croppieOptions" [imageUrl]="croppieImage" (result)="newImageResultFromCroppie($event)"></ngx-croppie>
+            </div>
+            <div>
+              <input type="file" id="BlogImage" #imageUpload (change)="imageUploadEvent($event)" accept="image/gif, image/jpeg, image/png"
+              />
+              <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cancelCroppieEdit()">Cancel</button>
+              <button type="button" class="btn btn-primary" (click)="saveImageFromCroppie()">Save</button>
+            </div>
             </div>
             <div class="form-group">
               <input type="text" pTooltip="Enter Product name" class="form-control input-lg" id="title" formControlName="title" placeholder="Title">
               
             </div>
             <div class="form-group">
-              <textarea cols="50" rows="10" class="form-control input-lg" id="description" formControlName="description" placeholder="Blog Description"></textarea>
+              <!-- <textarea cols="50" rows="10" class="form-control input-lg" id="description" formControlName="description" placeholder="Blog Description"></textarea>
+               -->
+               <p-editor formControlName="description" [style]="{'height':'320px'}"></p-editor>
               
             </div>
             <div class="form-group">
