@@ -6,6 +6,9 @@ import { EditProductComponent } from './components/products/edit-product/edit-pr
 import { AddProductComponent } from './components/products/add-product/add-product.component';
 import { DashboardRoutigModule } from './dashboard-routig.module';
 import { DashboardComponent } from './dashboard.component';
+import { AddBlogComponent } from './components/blog/add-blog/add-blog.component';
+import{ListBlogComponent} from './components/blog/list-blog/list-blog.component';
+import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,12 +16,18 @@ import { ListProductComponent } from './components/products/list-product/list-pr
 import { ProductService } from './services/product.service';
 import { UsersService } from './services/users.service';
 import {TooltipModule} from 'primeng/tooltip';
+import { BlogService } from './services/blog.service';
+import {CardModule} from 'primeng/card';
+import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
+
+
+
 
 
 @NgModule({
   imports: [
-    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule,TooltipModule],
-    providers:[ProductService,UsersService],
-  declarations: [DashboardComponent,AddProductComponent,AddUsersComponent,EditProductComponent, ListProductComponent,ListUsersComponent, EditUsersComponent]
+    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule,TooltipModule,CardModule],
+    providers:[ProductService,UsersService,BlogService],
+  declarations: [DashboardComponent,AddProductComponent,AddUsersComponent,EditProductComponent, ListProductComponent,ListUsersComponent, EditUsersComponent,AddBlogComponent,ListBlogComponent,EditBlogComponent,ImageCropperComponent]
 })
 export class DashboardModule { }

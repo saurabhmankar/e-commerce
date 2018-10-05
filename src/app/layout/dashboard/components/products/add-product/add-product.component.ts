@@ -130,6 +130,7 @@ export class AddProductComponent {
       console.log("response :: ", res);
       alert("Product added Successfully!");
       
+      
 
     })
     setTimeout(() => {

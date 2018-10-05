@@ -7,16 +7,22 @@
     <tr>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
-      <th scope="col">Status</th>
+      <th scope="col">Display Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Password</th>
+      <th scope="col">Role</th>
       <th scope="col">Operations</th>
      
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-      <td>{{user.name}}</td>
-      <td>{{user.lastname}}</td>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.display_name}}</td>
       <td>{{user.email }}</td>
+      <td>{{user.password }}</td>
+      <td>{{user.role }}</td>
      
       <td><button class="btn btn-primary" [routerLink]="['/dashboard/editUsers',user._id]">Edit</button>/<button class="btn btn-danger" (click)="delete(user._id)">Delete</button></td>
    

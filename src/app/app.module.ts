@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './library/shared/component/home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastModule} from '../../node_modules/primeng/toast';
+import {MessageService} from '../../node_modules/primeng/api';
 
 
 @NgModule({
@@ -27,10 +29,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormsModule,
     AppRouting,
     HttpClientModule,
-BrowserAnimationsModule,
+    ToastModule,
+  BrowserAnimationsModule,
     
   ],
-  providers: [AuthService,AuthGuardService,
+  providers: [AuthService,AuthGuardService,MessageService,
   {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptorService, multi:true}],
   bootstrap: [AppComponent]
 })

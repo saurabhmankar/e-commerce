@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
+    var user=localStorage.getItem('token');
+     console.log(user);
 
     for (i = 0; i < dropdown.length; i++) {
       dropdown[i].addEventListener("click", function () {

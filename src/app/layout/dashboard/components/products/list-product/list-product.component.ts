@@ -1,6 +1,9 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
+import {CardModule} from 'primeng/card';
+
+
 
 @Component({
   selector: 'app-list-product',
@@ -26,10 +29,10 @@ products:any;
       delete(id){
         this.product.delete(id).subscribe(res => {
           console.log('Deleted');
-
+          window.location.reload();
        
         
         });
-        this.router.navigate(['/dashboard/listProduct'])
+        
       }
 }

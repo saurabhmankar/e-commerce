@@ -1,0 +1,27 @@
+<app-dashboard></app-dashboard>
+<div class="listing">
+<h1>Blog List</h1>
+<br>
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Blog Image</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let blog of blogs">
+      <td><img src="{{blog.BlogImage}}" width="200px" height="100px"></td>
+      <td>{{blog.title}}</td>
+      <td>{{blog.description}}</td>
+      <td>{{blog.date}}</td>
+      <td><button class="btn btn-primary" [routerLink]="['/dashboard/editBlog',blog._id]">Edit</button>/<button class="btn btn-danger" (click)="delete(blog._id)">Delete</button></td>
+   
+    </tr>
+ 
+  </tbody>
+</table>
+</div>

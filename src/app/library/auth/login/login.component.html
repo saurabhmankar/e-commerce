@@ -10,7 +10,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                     <input type="text" class="form-control input-lg" formControlName="first_name"  placeholder="First Name" autofocus>
+                                        <div #fname style="display:inline-block; position:relative">
+                                     <input type="text" class="form-control input-lg" pTooltip="Enter First name" placeholder="Right" [appendTo]="fname" formControlName="first_name"  placeholder="First Name" autofocus>
+                                     </div>
                                      <div *ngIf="registrationForm.controls['first_name'].touched && !registrationForm.controls['first_name'].valid" class="cross-validation-error-message alert alert-danger">  
                                         <span *ngIf="registrationForm.controls['first_name'].hasError('required') ">  
                                             First name is required  
@@ -23,7 +25,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control input-lg" formControlName="last_name" placeholder="Last Name" >
+                                        <div #lname style="display:inline-block; position:relative">
+                                    <input type="text" class="form-control input-lg" pTooltip="Enter Last name" placeholder="Right" [appendTo]="lname" formControlName="last_name" placeholder="Last Name" >
+                                    </div>
                                     <div *ngIf="registrationForm.controls['first_name'].touched && !registrationForm.controls['last_name'].valid" class="cross-validation-error-message alert alert-danger">  
                                         <span *ngIf="registrationForm.controls['last_name'].hasError('required') ">  
                                             Last name is required  
@@ -36,7 +40,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg" pTooltip="Enter Display name" id="display_name" formControlName="display_name" placeholder="Display Name" >
+                                <div #dname style="display:inline-block; position:relative">
+
+                            <input type="text" class="form-control input-lg" pTooltip="Enter Display name" placeholder="Right" [appendTo]="dname" id="display_name" formControlName="display_name" placeholder="Display Name" >
+                            </div>
                             <div *ngIf="registrationForm.controls['display_name'].touched && !registrationForm.controls['display_name'].valid" class="cross-validation-error-message alert alert-danger">  
                                 <span *ngIf="registrationForm.controls['display_name'].hasError('required') ">  
                                     Display name is required  
@@ -47,7 +54,9 @@
                         
                           </div>
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg" pTooltip="Enter email" formControlName="email" placeholder="Email Address" >
+                                <div #email style="display:inline-block; position:relative">
+                            <input type="text" class="form-control input-lg" pInputText pTooltip="Enter email" placeholder="Right" [appendTo]="email" formControlName="email" placeholder="Email Address" >
+                            </div>
                             <div *ngIf="registrationForm.controls['email'].touched && !registrationForm.controls['email'].valid" class="cross-validation-error-message alert alert-danger">  
                                 <span *ngIf="registrationForm.controls['email'].hasError('required') ">  
                                     Email is required  
@@ -60,7 +69,10 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   <input type="password" class="form-control input-lg" pPassword pTooltip="Enter password" id="Password" formControlName="password" placeholder="Password">
+                                        <div #pwd style="display:inline-block; position:relative">
+                            
+                                   <input type="password" class="form-control input-lg" pPassword pTooltip="Enter password"placeholder="Right" [appendTo]="pwd" id="Password" formControlName="password" placeholder="Password">
+                                   </div>
                                    <div *ngIf="registrationForm.controls['password'].touched && !registrationForm.controls['password'].valid" class="cross-validation-error-message alert alert-danger">  
                                       <span *ngIf="registrationForm.controls['password'].hasError('required') ">  
                                           Password is required  

@@ -1,6 +1,8 @@
 
 
 <div class="sidebar">
+  <p>Welcome {{user}}</p>  
+  
   <a routerLink="/dashboard"><i class="fa fa-fw fa-home"></i> Dashboard</a><br>
   <a class="dropdown-btn ">Manage Users
     <i class="fa fa-caret-down"></i>
@@ -24,9 +26,9 @@
     <i class="fa fa-caret-down"></i>
    </a>
   <div class="dropdown-container">
-    <a routerLink="/dashboard/addProduct">Add Blog</a><br>
+    <a routerLink="/dashboard/addBlog">Add Blog</a><br>
 
-    <a routerLink="/dashboard/listProduct">List Blog</a><br>
+    <a routerLink="/dashboard/listBlog">List Blog</a><br>
     
   </div><br>
     <a (click)="logout()"><i class="fa fa-fw fa-logout btn" ></i> Logout</a>

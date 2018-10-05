@@ -13,12 +13,18 @@ export class EditUsersComponent implements OnInit {
 constructor(private route:ActivatedRoute,private user:UsersService, private router: Router){}
   ngOnInit(){
   this.updateForm = new FormGroup({
-    "name": new FormControl('',[ 
+    "first_name": new FormControl('',[ 
       Validators.required]),
-    "lastname": new FormControl('',[ 
+    "last_name": new FormControl('',[ 
       Validators.required]),
+      "display_name": new FormControl('',[ 
+        Validators.required]),
     "email": new FormControl('',[ 
       Validators.required]),
+      "password": new FormControl('',[ 
+        Validators.required]),
+        "role": new FormControl('',[ 
+          Validators.required]),
    
     // "confirm_password": new FormControl(''),
 

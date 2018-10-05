@@ -7,7 +7,15 @@
 /* ul li a{
     color:white
 }  */
-
+.test-toast .ui-toast-message {
+            color: #ffffff;
+            background: #FC466B;
+            background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+            background: linear-gradient(to right, #3F5EFB, #FC466B);
+        }
+.test-toast .ui-toast-close-icon {
+            color: #ffffff;
+        }
 
 
 body {

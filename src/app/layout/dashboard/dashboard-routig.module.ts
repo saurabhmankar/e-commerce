@@ -11,6 +11,9 @@ import { RouterModule } from '@angular/router';
 import { EditProductComponent } from './components/products/edit-product/edit-product.component';
 import { ListProductComponent } from './components/products/list-product/list-product.component';
 import {TooltipModule} from 'primeng/tooltip';
+import { AddBlogComponent } from './components/blog/add-blog/add-blog.component';
+import { ListBlogComponent } from './components/blog/list-blog/list-blog.component';
+import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.component';
 
 const routes :Routes =[
   {path:'', component:DashboardComponent},
@@ -19,7 +22,11 @@ const routes :Routes =[
   {path:'listProduct', component:ListProductComponent},
   {path:'addUsers', component:AddUsersComponent},
   {path:'editUsers/:id', component:EditUsersComponent},
-  {path:'listUsers', component:ListUsersComponent}
+  {path:'listUsers', component:ListUsersComponent},
+  {path:'addBlog', component:AddBlogComponent},
+  {path:'listBlog', component:ListBlogComponent},
+  {path:'editBlog/:id', component:EditBlogComponent},
+
 ]
 @NgModule({
   imports: [
