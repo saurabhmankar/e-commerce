@@ -16,7 +16,7 @@
     <tr *ngFor="let blog of blogs">
       <td><img src="{{blog.BlogImage}}" width="200px" height="100px"></td>
       <td>{{blog.title}}</td>
-      <td>{{blog.description}}</td>
+      <td><div  innerHtml={{blog.description}}></div></td>
       <td>{{blog.date}}</td>
       <td><button class="btn btn-primary" [routerLink]="['/dashboard/editBlog',blog._id]">Edit</button>/<button class="btn btn-danger" (click)="delete(blog._id)">Delete</button></td>
    
