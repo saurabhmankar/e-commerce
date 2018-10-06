@@ -36,12 +36,7 @@
                           Login
                         </button>
                       </li>
-                      <li style="float: right;">
-                            <p-toast position="top-right" ></p-toast>
-                        <button type="button" class="btn btn-default" (click)="test()">
-                          Test
-                        </button>
-                      </li>
+                      
 
 
                   </ul>
@@ -79,7 +74,7 @@
       <div class="container-fluid content">
         <div class="row">
           <div class="form-group">
-            <input type="text" class="form-control input-lg" id="email_address" formControlName="email" placeholder="Email Address" required>
+            <input type="text" class="form-control input-lg" id="email_address" formControlName="email" placeholder="Email Address" autofocus required>
             <div *ngIf="loginForm.controls['email'].touched && !loginForm.controls['email'].valid" class="cross-validation-error-message alert alert-danger">  
               <span *ngIf="loginForm.controls['email'].hasError('required') ">  
                   Email is required  

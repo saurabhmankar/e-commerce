@@ -5,18 +5,19 @@ import { Component, OnInit,TemplateRef } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {MessageService} from 'primeng/api';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [MessageService],
+  providers: [MessageService,ToastrService],
   
 })
 export class HomeComponent implements OnInit {
   loginForm:FormGroup
   modalRef: BsModalRef;
-  constructor(private Toast: MessageService,private modalService: BsModalService, private auth:AuthService,private router:Router) {}
+  constructor(private toastr: ToastrService,private modalService: BsModalService, private auth:AuthService,private router:Router) {}
 
 
   ngOnInit() {
@@ -32,24 +33,10 @@ export class HomeComponent implements OnInit {
         
       })
   }
-  test() {
-    console.log("Test Calling")
-    this.Toast.add({severity:'success', detail:'Test Successful'});
-}
-success() {
-  console.log("Success Calling")
-  this.Toast.add({severity:'success', detail:'Login Successful'});
-}
-
-warning() {
-    this.Toast.addAll([{severity:'success', summary:'Service Message', detail:'Via MessageService'},
-                                {severity:'info', summary:'Info Message', detail:'Via MessageService'}]);
-}
-
-clear() {
-    this.Toast.clear();
-}
-
+  showSuccess() {
+    this.toastr.success('Login Successfull','Welcome to Dashboard');
+  }
+  
 
 
   onLogin(){
@@ -58,8 +45,8 @@ clear() {
       var user=res[0].first_name;
       var role=res[0].role;
       console.log(role);
+      this.showSuccess();
      localStorage.setItem('token',user);
-     this.success();
      if(role=="user"){
        this.router.navigate(['/userdashboard/userdashboard'])
      }else if(role=="admin"){

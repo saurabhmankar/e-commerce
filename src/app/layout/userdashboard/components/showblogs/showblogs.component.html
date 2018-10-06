@@ -8,13 +8,25 @@
   <div class="leftcolumn">
     <div class="card" *ngFor="let blog of blogs">
       <h2>{{blog.title}}</h2>
-      <h5>{{blog.description}}</h5>
-      <div class="fakeimg" style="height:200px;"><img src="{{blog.BlogImage}}" width="auto" height="100px"></div>
-      <p>Some text..</p>
-      <button class="btn btn-md btn-success">Like</button>
-      <button class="btn btn-md btn-warning">Comment</button>
+      <h5><div innerHtml={{blog.description}}></div></h5>
+      <div class="img" style="height:auto;width:auto;"><img src="{{blog.BlogImage}}" width="auto" height="100px"></div>
+      <p>{{blog.date}}</p>
+      <button class="btn btn-md btn-success" id="like" class="like-button" style= "color:white" (click)="setColor('like', 'red')" ></button>
     </div>
 <div class="footer">
   <h2>Footer</h2>
 </div>
+</div>
+<button class="open-button" (click)="openForm()" >Chat</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="" class="form-container">
+    <h1>Chat</h1>
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" (click)="closeForm()">Close</button>
+  </form>
 </div>

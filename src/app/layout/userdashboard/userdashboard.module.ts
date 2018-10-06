@@ -7,11 +7,12 @@ import { ShowblogsComponent } from './components/showblogs/showblogs.component'
 import { ProductService } from '../dashboard/services/product.service';
 import { BlogService } from '../dashboard/services/blog.service';
 import {CardModule} from 'primeng/card';
+import {RatingModule} from 'primeng/rating';
 
 
 @NgModule({
   imports: [
-    CommonModule,UserdashboardRoutingModule,CardModule
+    CommonModule,UserdashboardRoutingModule,CardModule,RatingModule
   ],
   declarations: [UserdashboardComponent, ShowproductsComponent, ShowblogsComponent],
   providers:[ProductService,BlogService]

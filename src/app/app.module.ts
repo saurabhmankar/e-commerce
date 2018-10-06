@@ -16,6 +16,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastModule} from '../../node_modules/primeng/toast';
 import {MessageService} from '../../node_modules/primeng/api';
 import { SharedModule } from './library/shared/shared.module';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -32,8 +34,8 @@ import { SharedModule } from './library/shared/shared.module';
     HttpClientModule,
     ToastModule,
   BrowserAnimationsModule,
-  SharedModule
-
+  SharedModule,
+    ToastrModule.forRoot()
     
   ],
   providers: [AuthService,AuthGuardService,MessageService,

@@ -1,31 +1,17 @@
 <app-userdashboard></app-userdashboard>
 <div class="listing">
-<h1>Product List</h1>
-<br>
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col">Product Image</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Product Cost</th>
-      <th scope="col">Shipping Cost</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products">
-      <td><img src="{{product.productImage}}" width="200px" height="100px"></td>
-      <td>{{product.name}}</td>
-      <td>{{product.description}}</td>
-      <td>{{product.p_cost}}</td>
-      <td>{{product.s_cost}}</td>
-      <td>{{product.status}}</td>
-
-   
-    </tr>
- 
-  </tbody>
-</table>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let product of products">
+      <div class="card" >
+        <img src="{{product.productImage}}" alt="Product Image" style="width:100%">
+        <h1>{{product.name}}</h1>
+        <p class="price">${{product.p_cost}}</p>
+        <p>{{product.description}}</p>
+        <p>{{product.status}}</p>
+        <p>
+          <button>Add to Cart</button>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
-
