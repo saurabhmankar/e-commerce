@@ -8,10 +8,8 @@
   <div class="leftcolumn">
     <div class="card" *ngFor="let blog of blogs">
       <h2>{{blog.title}}</h2>
-      <h5><div innerHtml={{blog.description}}></div></h5>
-      <div class="img" style="height:auto;width:auto;"><img src="{{blog.BlogImage}}" width="auto" height="100px"></div>
       <p>{{blog.date}}</p>
-      <button class="btn btn-md btn-success" id="like" class="like-button" style= "color:white" (click)="setColor('like', 'red')" ></button>
+      <button [routerLink]="['/userdashboard/userdashboard/readmore',blog._id]" class="btn btn-info btn-sm">Read More</button>
     </div>
 <div class="footer">
   <h2>Footer</h2>

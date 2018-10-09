@@ -44,9 +44,11 @@ export class HomeComponent implements OnInit {
     this.auth.login(this.loginForm.value).subscribe(res =>{
       var user=res[0].first_name;
       var role=res[0].role;
+      var userid=res[0]._id;
       console.log(role);
       this.showSuccess();
      localStorage.setItem('token',user);
+     localStorage.setItem('userid',userid);
      if(role=="user"){
        this.router.navigate(['/userdashboard/userdashboard'])
      }else if(role=="admin"){

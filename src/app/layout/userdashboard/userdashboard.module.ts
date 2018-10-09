@@ -8,13 +8,15 @@ import { ProductService } from '../dashboard/services/product.service';
 import { BlogService } from '../dashboard/services/blog.service';
 import {CardModule} from 'primeng/card';
 import {RatingModule} from 'primeng/rating';
+import { BlogdetailComponent } from './components/blogdetail/blogdetail.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
-    CommonModule,UserdashboardRoutingModule,CardModule,RatingModule
+    CommonModule,UserdashboardRoutingModule,CardModule,RatingModule,ReactiveFormsModule,FormsModule
   ],
-  declarations: [UserdashboardComponent, ShowproductsComponent, ShowblogsComponent],
+  declarations: [UserdashboardComponent, ShowproductsComponent, ShowblogsComponent, BlogdetailComponent],
   providers:[ProductService,BlogService]
 })
 export class UserdashboardModule { 

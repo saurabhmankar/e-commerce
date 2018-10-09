@@ -1,0 +1,26 @@
+<app-userdashboard></app-userdashboard>
+<div class="listing">
+  <div class="header">
+    <h2>{{b.title}}</h2>
+  </div>
+
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2>{{b.title}}</h2>
+        <h5>
+          <div innerHtml={{b.description}}></div>
+        </h5>
+        <div class="img" style="height:auto;width:auto;">
+          <img src="{b.BlogImage}}" width="auto" height="auto">
+        </div>
+        <p>{{b.date}}</p>
+
+      </div>
+
+    </div>
+    <section class="comment">
+<label>Comment:</label>
+<textarea id="comment" row="5" column="3" placeholder="Comment Here..."></textarea>
+<button class="btn btn-md btn-info" (click)="addComment()">Add</button>
+    </section>
