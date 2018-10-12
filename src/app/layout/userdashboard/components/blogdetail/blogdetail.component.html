@@ -12,15 +12,34 @@
           <div innerHtml={{b.description}}></div>
         </h5>
         <div class="img" style="height:auto;width:auto;">
-          <img src="{b.BlogImage}}" width="auto" height="auto">
+          <img src="{{b.BlogImage}}" width="auto" height="auto">
         </div>
-        <p>{{b.date}}</p>
+        <p>{{b.date|date:"fullDate"}}</p>
+        <section class="showC">
+          <div class="row blogs">
+      
+              <div class="col-md-12" *ngFor="let user of commentList">
+              <h5><i><b>By:  {{user.userid.display_name}}</b></i></h5>
+              <h5>{{user.comment}}</h5>
+              <p-rating [ngModel]="user.rating" readonly="true" [cancel]="false"></p-rating> 
+              
+              <br>
+              <hr>
+      
+            </div>
+      </div>
+      </section>
 
       </div>
 
     </div>
+    </div>
     <section class="comment">
 <label>Comment:</label>
 <textarea id="comment" row="5" column="3" placeholder="Comment Here..."></textarea>
+
+<p-rating [(ngModel)]="val1" (onRate)="handleRate($event)"  (onCancel)="handleCancel($event)"></p-rating>
 <button class="btn btn-md btn-info" (click)="addComment()">Add</button>
     </section>
+
+    

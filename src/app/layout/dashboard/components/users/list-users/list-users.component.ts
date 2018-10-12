@@ -26,7 +26,7 @@ export class ListUsersComponent implements OnInit {
       delete(id){
         this.user.deleteUsers(id).subscribe(res => {
           //console.log('Deleted');
-          window.location.reload();
+          this.getDetails();
           // this.router.navigate(['/dashboard/listUsers']);
         });
         

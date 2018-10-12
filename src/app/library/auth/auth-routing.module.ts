@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
+
 
 const routes :Routes=[
   {path:"", component:LoginComponent},
@@ -15,6 +17,7 @@ const routes :Routes=[
 @NgModule({
   imports: [
     CommonModule,
+    ToastrModule,
     RouterModule.forChild(routes)
   ],
   exports:[RouterModule],

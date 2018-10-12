@@ -13,53 +13,7 @@
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-// export class AddProductComponent implements OnInit {
-// fileToUpload: File = null;
-// imageUrl:String="/assests/images/backg.jpg"
-// productForm:FormGroup
-//   constructor(private product:ProductService,private router:Router) { }
-// ngOnInit(){
-//   this.productForm = new FormGroup({
-//     "productImage": new FormControl(''),
-//     "name": new FormControl('',[Validators.required]),
-//     "description": new FormControl('',[Validators.required]),
-//     "p_cost": new FormControl('',[Validators.required]),
-//     "s_cost": new FormControl('',[Validators.required]),
-//     "status":new FormControl('',[Validators.required]),
-//     // "confirm_password": new FormControl(''),
 
-//   })
-  
-  
-// }
-// handleFileInput(file:FileList){
-//   this.fileToUpload =file.item(0);
-
-//   //show image preview
-//   var reader=new FileReader();
-//   reader.onload=(event:any)=>{
-//     this.imageUrl=event.target.result;
-
-//   }
-//       reader.readAsDataURL(this.fileToUpload);
-//       console.log("Image:"+this.fileToUpload.name);
-    
-// }
-// onSubmit() {
-//   console.log(this.productForm.value);
-//   console.log(this.fileToUpload);
-//   this.product.addProduct(this.productForm.value)
-//     .subscribe((res: any) => {
-//       res = res.data;
-//       console.log("response :: ", res);
-//       this.productForm.reset();
-//       alert("Product added Successfully!");
-      
-
-//     })
-
-// }
-// }
 export class AddProductComponent {
   productForm: FormGroup;
   loading: boolean = false;
@@ -101,12 +55,6 @@ export class AddProductComponent {
     });
   }
 
-  // onFileChange(event) {
-  //   if(event.target.files.length > 0) {
-  //     let file = event.target.files[0];
-  //     this.productForm.get('productImage').setValue(file);
-  //   }
-  // }
 
   private prepareSave(): any {
     let input = new FormData();
@@ -139,10 +87,7 @@ export class AddProductComponent {
     }, 1000);
   }
 
-  // clearFile() {
-  //   this.productForm.get('productImage').setValue(null);
-  //   this.fileInput.nativeElement.value = '';
-  // }
+  
 
 
 }

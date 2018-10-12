@@ -28,7 +28,8 @@ export class ListBlogComponent implements OnInit {
       delete(id){
         this.blog.delete(id).subscribe(res => {
           console.log('Deleted');
-          window.location.reload();
+          this.getDetails();
+          
         });
         // this.router.navigate(['/dashboard/listBlog'])
       }

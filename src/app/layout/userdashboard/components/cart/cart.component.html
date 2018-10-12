@@ -1,0 +1,17 @@
+<app-userdashboard></app-userdashboard>
+<div class="listing">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let cart of carts">
+      <div class="card" >
+        <img src="{{cart.productid.productImage}}" alt="Product Image" style="width:100%">
+        <h1>{{cart.productid.name}}</h1>
+        <p class="price">${{cart.productid.p_cost}}</p>
+        <p>{{cart.productid.description}}</p>
+        <p>{{cart.productid.status}}</p>
+        <p>
+          <button (click)="Remove(cart._id)">Remove</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

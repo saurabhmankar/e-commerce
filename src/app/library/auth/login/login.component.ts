@@ -2,7 +2,7 @@ import { AuthService } from './../../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   registrationForm:FormGroup
-  constructor(private auth:AuthService,private router:Router) { }
+  constructor(private auth:AuthService,private router:Router,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
@@ -23,16 +23,19 @@ export class LoginComponent implements OnInit {
 
     })
   }
-
+  showSuccess() {
+    this.toastr.success('Registration Successfull','you can login again now.');
+  }
   onSubmit() {
    console.log(this.registrationForm.value)
    this.auth.signUp(this.registrationForm.value).subscribe(res =>{
      console.log("successully registered");
+     
      this.registrationForm.reset();
 
    });
    this.router.navigate([''])
-
+   this.showSuccess();
   }
   
 

@@ -9,11 +9,12 @@ import { ListProductComponent } from './dashboard/components/products/list-produ
 import { ListUsersComponent } from './dashboard/components/users/list-users/list-users.component';
 import { EditUsersComponent } from './dashboard/components/users/edit-users/edit-users.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // import { AddProductComponnt } from './dashboard/components/products/add-product/add-product.component';
 
 @NgModule({
   imports: [
-    CommonModule,LayoutRoutingModule,TooltipModule,CardModule,RatingModule
+    CommonModule,LayoutRoutingModule,TooltipModule,CardModule,RatingModule,ReactiveFormsModule,FormsModule
   ],
   declarations: []
 })

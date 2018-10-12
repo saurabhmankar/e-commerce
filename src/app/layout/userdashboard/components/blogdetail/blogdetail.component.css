@@ -1,8 +1,14 @@
 .listing{
     margin-left:12.5%;margin-right: 2%
 }
+.listing h2{
+  font-family: fantasy;
+  font-style: italic;
+  color: #609;
+  background: rgb(204, 148, 148)
+}
 .listing th{
-    color: red;
+    color: rgb(118, 199, 154);
 }
 .listing img{
     border: 2px royalblue solid;

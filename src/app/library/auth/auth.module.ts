@@ -9,6 +9,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {TooltipModule} from 'primeng/tooltip';
 import {PasswordModule} from 'primeng/password';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {PasswordModule} from 'primeng/password';
     HttpClientModule,
     TooltipModule,
     PasswordModule,
+    ToastrModule
   
 
   ],

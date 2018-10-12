@@ -42,9 +42,20 @@ export class BlogService {
 
 
   }
+  
+  addComment(data:any):Observable<any>{
+    return this.http.post("http://localhost:10010/api/addComment/",data);
 
 }
+listComment(id):Observable<any>{
+  console.log("Id at service:"+id);
+  return this
+  .http
+  .get('http://localhost:10010/api/listComment?id='+id);
+}
 
+
+}
 
 
 

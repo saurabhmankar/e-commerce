@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private toastr: ToastrService) { }
 
   ngOnInit() {
     var dropdown = document.getElementsByClassName("dropdown-btn");
@@ -27,11 +28,17 @@ export class DashboardComponent implements OnInit {
         }
       });
     }
+    
+  }
+  showSuccess() {
+    this.toastr.success('Logout Successfull','Please login again');
   }
 
   logout(){
     localStorage.removeItem('token');
     this.router.navigate(['']);
+    this.showSuccess();
+    
   }
 
 }

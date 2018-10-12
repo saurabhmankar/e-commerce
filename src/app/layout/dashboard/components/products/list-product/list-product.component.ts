@@ -29,7 +29,7 @@ products:any;
       delete(id){
         this.product.delete(id).subscribe(res => {
           console.log('Deleted');
-          window.location.reload();
+          this.getDetails();
        
         
         });

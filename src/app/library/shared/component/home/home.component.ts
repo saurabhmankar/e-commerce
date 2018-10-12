@@ -46,11 +46,16 @@ export class HomeComponent implements OnInit {
       var role=res[0].role;
       var userid=res[0]._id;
       console.log(role);
+      this.modalRef.hide();
       this.showSuccess();
      localStorage.setItem('token',user);
      localStorage.setItem('userid',userid);
+     var logintoken=localStorage.getItem("Token");
+     console.log(logintoken);
+    
      if(role=="user"){
        this.router.navigate(['/userdashboard/userdashboard'])
+      
      }else if(role=="admin"){
       this.router.navigate(['/dashboard']) 
      }
@@ -60,5 +65,6 @@ export class HomeComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+  
 
 }

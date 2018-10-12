@@ -20,7 +20,7 @@ import { BlogService } from './services/blog.service';
 import {CardModule} from 'primeng/card';
 import { NgxCroppieModule } from 'ngx-croppie';
 import {EditorModule} from 'primeng/editor';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -28,7 +28,7 @@ import {EditorModule} from 'primeng/editor';
 
 @NgModule({
   imports: [
-    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule,TooltipModule,CardModule,NgxCroppieModule,EditorModule],
+    CommonModule,DashboardRoutigModule,ReactiveFormsModule,FormsModule,TooltipModule,CardModule,NgxCroppieModule,EditorModule,ToastrModule],
     providers:[ProductService,UsersService,BlogService],
   declarations: [DashboardComponent,AddProductComponent,AddUsersComponent,EditProductComponent, ListProductComponent,ListUsersComponent, EditUsersComponent,AddBlogComponent,ListBlogComponent,EditBlogComponent]
 })

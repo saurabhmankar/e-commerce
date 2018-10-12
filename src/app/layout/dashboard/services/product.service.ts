@@ -33,5 +33,22 @@ export class ProductService {
 
 
   }
+  addToCart(data:any):Observable<any>{
+    return this.http.post("http://localhost:10010/addToCart",data);
+  
+    }
 
+    listCart(id):Observable<any>{
+      console.log("Id at service:"+id);
+      return this
+      .http
+      .get('http://localhost:10010/listCart?id='+id);
+    }
+    deleteCart(ids) {
+      return this
+        .http
+        .post('http://localhost:10010/deleteFromCart', ids);
+  
+  
+    }
 }
