@@ -5,12 +5,18 @@
       <div class="card" >
         <img src="{{cart.productid.productImage}}" alt="Product Image" style="width:100%">
         <h1>{{cart.productid.name}}</h1>
-        <p class="price">${{cart.productid.p_cost}}</p>
+        <p class="price">${{cart.totalCost}}</p>
+        <p>Quantity:{{cart.quantity}}</p>
         <p>{{cart.productid.description}}</p>
         <p>{{cart.productid.status}}</p>
         <p>
           <button (click)="Remove(cart._id)">Remove</button>
         </p>
+        <button class="btn btn-primary" type="button" icon="pi pi-check" style="margin-right: .25em" (click)="IncreaseQuantity(this.cart.productid._id,this.cart.quantity)">+</button>
+        <input type="text" value="{{cart.quantity}}">
+        <button class="btn btn-primary" type="button" icon="pi pi-check" style="margin-right: .25em" (click)="DecreaseQuantity(this.cart._id,this.cart.productid._id,this.cart.quantity)">-</button>
+
+
       </div>
     </div>
   </div>

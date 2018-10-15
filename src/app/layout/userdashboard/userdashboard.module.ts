@@ -12,11 +12,12 @@ import { BlogdetailComponent } from './components/blogdetail/blogdetail.componen
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CartComponent } from './components/cart/cart.component';
+import {SpinnerModule} from 'primeng/spinner';
 
 
 @NgModule({
   imports: [
-    CommonModule,UserdashboardRoutingModule,CardModule,RatingModule,ReactiveFormsModule,FormsModule,ToastrModule
+    CommonModule,UserdashboardRoutingModule,CardModule,RatingModule,ReactiveFormsModule,FormsModule,ToastrModule,SpinnerModule
   ],
   declarations: [UserdashboardComponent, ShowproductsComponent, ShowblogsComponent, BlogdetailComponent, CartComponent],
   providers:[ProductService,BlogService]

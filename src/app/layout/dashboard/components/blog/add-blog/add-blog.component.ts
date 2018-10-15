@@ -54,28 +54,6 @@ export class AddBlogComponent implements OnInit{
     this.croppieImage = this.imageUrl;
   }
 
-  // handleFileInput(file:FileList){
-  //     this.fileToUpload =file.item(0);
-  //     console.log(this.fileToUpload);
-    
-  //     //show image preview
-  //     var reader=new FileReader();
-  //     reader.onload=(event:any)=>{
-  //       this.imageUrl=event.target.result;
-         
-        
-    
-  //     }
-  //     reader.onloadend = (loadEvent) => {
-  //       this.croppieImage = reader.result;
-  //     };
-  //     reader.readAsDataURL(this.fileToUpload);
-    
-  //         reader.readAsDataURL(this.fileToUpload);
-  //         console.log("Image:"+this.fileToUpload.name);
-  //         this.BlogForm.get('BlogImage').setValue(this.fileToUpload);
-        
-  //   }
 
   createForm() {
     this.BlogForm = this.fb.group({

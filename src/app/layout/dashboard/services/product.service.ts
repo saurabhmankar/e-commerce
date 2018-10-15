@@ -51,4 +51,8 @@ export class ProductService {
   
   
     }
+    UpdateProductQuantity(item:any):Observable<any>{
+      return this.http.post("http://localhost:10010/UpdateCart",item);
+}
+
 }

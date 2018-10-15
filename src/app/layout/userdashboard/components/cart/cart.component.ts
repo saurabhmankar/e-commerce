@@ -8,15 +8,18 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  carts: any
+  carts: any;
+  quantityCount: number = 1;
+  quantity: number;
 
-  constructor(private product: ProductService,private toastr: ToastrService) { }
+
+  constructor(private product: ProductService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getProductFromCart();
   }
   showSuccess() {
-    this.toastr.success('Successfull!','Product Romoved From Cart');
+    this.toastr.success('Successfull!', 'Product Romoved From Cart');
   }
 
   getProductFromCart() {
@@ -28,7 +31,7 @@ export class CartComponent implements OnInit {
     })
 
   }
-  
+
   Remove(cid) {
     console.log("UserId:" + cid);
     var ids = {
@@ -44,4 +47,47 @@ export class CartComponent implements OnInit {
     )
 
   }
+
+
+  IncreaseQuantity(productId,quantity){
+    console.log(productId,quantity);
+    let item = {
+      productid : productId ,
+      userid : localStorage.getItem('userid'),
+      quantity : quantity + 1
+    } 
+    console.log(item);
+    this.product.UpdateProductQuantity(item).subscribe(res => {
+      this.getProductFromCart(); 
+        console.log('Product Quantity Increased');
+    });
+
+  }
+
+  DecreaseQuantity(cartId,productId,quantity){
+    console.log(cartId,productId,quantity);
+    let item = {
+      productid : productId ,
+      userid : localStorage.getItem('userid'),
+      quantity : quantity - 1
+    } 
+    
+    console.log(item);
+    if(item.quantity == 0){
+      console.log("CartId",cartId)
+      this.Remove(cartId);
+      console.log("Cart Deleted",cartId)
+
+    }
+    else {
+      console.log("Quantity Greater athan 1")
+      this.product.UpdateProductQuantity(item).subscribe(res => {
+        console.log('Product Quantity Decreased');
+        this.getProductFromCart();
+        });
+    }
+
+
+  }
+
 }

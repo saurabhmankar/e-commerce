@@ -8,45 +8,45 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./showproducts.component.css']
 })
 export class ShowproductsComponent implements OnInit {
-  products:any
+  products: any
 
-  constructor(private product:ProductService,private toastr: ToastrService) { }
+  constructor(private product: ProductService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getDetails()
-  
+
   }
   showSuccess() {
-    this.toastr.success('Check in Cart','Product Added Successfully');
+    this.toastr.success('Check in Cart', 'Product Added Successfully');
   }
-  getDetails(){
+  getDetails() {
 
     this.product.listProduct().subscribe(res => {
       this.products = res;
-      console.log("products",this.products);
+      console.log("products", this.products);
     });
   }
-  addtoCart(pid,pcost){
-console.log("Pid:"+pid);
-console.log("pcost:"+pcost);
-var uid=localStorage.getItem("userid");
-console.log("Uid:"+uid);
-var product={
-  productid:pid,
-  userid:uid,
-  productCost:pcost
+  addtoCart(pid, pcost) {
+    console.log("Pid:" + pid);
+    console.log("pcost:" + pcost);
+    var uid = localStorage.getItem("userid");
+    console.log("Uid:" + uid);
+    var product = {
+      productid: pid,
+      userid: uid,
+      productCost: pcost
+    }
+    this.product.addToCart(product)
+      .subscribe((res: any) => {
+        // res = res.data;
+        console.log("response :: ", res);
+        this.showSuccess();
+
+      })
+
+
+
+  }
 }
-this.product.addToCart(product)
-    .subscribe((res: any) => {
-      // res = res.data;
-      console.log("response :: ", res);
-      this.showSuccess();
-      
-    })
-  
-
-
-  }
-  }
 
 
