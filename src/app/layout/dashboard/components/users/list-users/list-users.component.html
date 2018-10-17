@@ -1,33 +1,53 @@
 <app-dashboard></app-dashboard>
 <div class="list">
-<h1>Users List</h1>
-<br>
-<table class="table table-striped table-dark">
-  <thead>
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Display Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Password</th>
-      <th scope="col">Role</th>
-      <th scope="col">Operations</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{user.first_name}}</td>
-      <td>{{user.last_name}}</td>
-      <td>{{user.display_name}}</td>
-      <td>{{user.email }}</td>
-      <td>{{user.password }}</td>
-      <td>{{user.role }}</td>
-     
-      <td><button class="btn btn-primary" [routerLink]="['/dashboard/editUsers',user._id]">Edit</button>/<button class="btn btn-danger" (click)="delete(user._id)">Delete</button></td>
-   
-    </tr>
- 
-  </tbody>
-</table>
+  <h1>Users List</h1>
+  <br>
+  <div class="row">
+  <div class="col-md-8">
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Display Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Password</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.first_name}}</td>
+          <td>{{user.last_name}}</td>
+          <td>{{user.display_name}}</td>
+          <td>{{user.email }}</td>
+          <td>{{user.password }}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-4">
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Role</th>
+          <th scope="col">Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let role of roles">
+          <td>{{role.role }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" [routerLink]="['/dashboard/editUsers',role.roleid]">Edit</button>/
+            <button class="btn btn-danger btn-sm" (click)="delete(role.roleid)">Delete</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
 </div>

@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListUsersComponent implements OnInit {
   users:any;
+  roles:any;
   constructor(private user:UsersService,private router :Router) { }
 
   ngOnInit() {
@@ -18,8 +19,14 @@ export class ListUsersComponent implements OnInit {
       getDetails(){
   
         this.user.listUsers().subscribe(res => {
-          this.users = res;
+          this.users = res.userData;
+          this.roles= res.role;
+        
+          
           console.log("users",this.users);
+          console.log("Roles",this.roles);
+
+          // console.log(this.users.role[0].role);
         });
       }
 

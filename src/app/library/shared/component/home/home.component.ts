@@ -40,15 +40,18 @@ export class HomeComponent implements OnInit {
 
 
   onLogin(){
-    console.log(this.loginForm.value)
+     console.log(this.loginForm.value)
     this.auth.login(this.loginForm.value).subscribe(res =>{
-      var user=res[0].first_name;
-      var role=res[0].role;
-      var userid=res[0]._id;
+      console.log("Response",res);
+      var user=res.userData.first_name;
+      var role=res.role;
+      var userid=res._id;
+      let token=res.token;
       console.log(role);
       this.modalRef.hide();
       this.showSuccess();
-     localStorage.setItem('token',user);
+     localStorage.setItem('token',token);
+     localStorage.setItem('user',user);
      localStorage.setItem('userid',userid);
      var logintoken=localStorage.getItem("Token");
      console.log(logintoken);
