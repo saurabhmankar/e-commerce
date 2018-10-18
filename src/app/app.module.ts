@@ -18,6 +18,8 @@ import {MessageService} from '../../node_modules/primeng/api';
 import { SharedModule } from './library/shared/shared.module';
  
 import { ToastrModule } from 'ngx-toastr';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
   ],
   imports: [
+    ButtonModule,
+    DialogModule,
     BrowserModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,

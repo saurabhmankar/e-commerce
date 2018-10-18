@@ -17,6 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
   loginForm:FormGroup
   modalRef: BsModalRef;
+  display: boolean = false;
   constructor(private toastr: ToastrService,private modalService: BsModalService, private auth:AuthService,private router:Router) {}
 
 
@@ -62,12 +63,29 @@ export class HomeComponent implements OnInit {
      }else if(role=="admin"){
       this.router.navigate(['/dashboard']) 
      }
+     else if(role=="superadmin"){
+      this.showDialog();
+     }
     })
   }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
+  showDialog() {
+    this.display = true;
+}
+
+admin(){
+  this.router.navigate(['/dashboard']);
+  this.display = false;
+
+}
+
+user(){
+       this.router.navigate(['/userdashboard/userdashboard'])
+  this.display = false;
+}
   
 
 }
