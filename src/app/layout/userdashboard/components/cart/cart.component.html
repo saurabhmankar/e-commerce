@@ -12,12 +12,12 @@
         <p>
           <button (click)="Remove(cart._id)">Remove</button>
         </p>
-        <button class="btnq btn-primary" type="button" icon="pi pi-check" style="margin-right: .25em" (click)="IncreaseQuantity(this.cart.productid._id,this.cart.quantity)">+</button>
-        <input type="text" value="{{cart.quantity}}">
-        <button class="btnq btn-primary" type="button" icon="pi pi-check" style="margin-right: .25em" (click)="DecreaseQuantity(this.cart._id,this.cart.productid._id,this.cart.quantity)">-</button>
-
-
       </div>
+        <input type="button" class="btn btn-sm btn-primary" type="button" icon="pi pi-check" style="margin-right: .25em" (click)="IncreaseQuantity(this.cart.productid._id,this.cart.quantity)" value="+">
+        <input type="text" value="{{cart.quantity}}">
+        <input type="button" class="btn btn-sm btn-primary" type="button" icon="pi pi-check" style="margin-right: .25em" (click)="DecreaseQuantity(this.cart._id,this.cart.productid._id,this.cart.quantity)" value="-">
     </div>
+    
   </div>
+  <button [routerLink]="['/userdashboard/userdashboard/checkout']">Proceed to Checkout</button>
 </div>

@@ -17,6 +17,9 @@
     text-align: center;
     font-family: arial;
   }
+  .btn {
+    margin-left:11%;margin-right: 2%
+}
   
   .price {
     color: grey;

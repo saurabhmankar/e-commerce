@@ -5,13 +5,15 @@ import {ShowblogsComponent} from '../userdashboard/components/showblogs/showblog
 import { ShowproductsComponent } from './components/showproducts/showproducts.component';
 import { BlogdetailComponent } from './components/blogdetail/blogdetail.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   {path:'', component:UserdashboardComponent},
   {path:'showblogs', component:ShowblogsComponent},
   {path:'showproducts', component:ShowproductsComponent},
   {path:'readmore/:id', component:BlogdetailComponent},
-  {path:'cart', component:CartComponent}
+  {path:'cart', component:CartComponent},
+  {path:'checkout', component:CheckoutComponent}
   // {path:'userdashboard', component:UserdashboardComponent},
   
 ];

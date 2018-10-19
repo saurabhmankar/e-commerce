@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       console.log("Response",res);
       var user=res.userData.first_name;
       var role=res.role;
-      var userid=res._id;
+      var userid=res.userData.roleid;
       let token=res.token;
       console.log(role);
       this.modalRef.hide();

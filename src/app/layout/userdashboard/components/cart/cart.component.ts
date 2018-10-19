@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../dashboard/services/product.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   quantity: number;
 
 
-  constructor(private product: ProductService, private toastr: ToastrService) { }
+  constructor(private router:Router,private product: ProductService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getProductFromCart();
@@ -27,6 +28,7 @@ export class CartComponent implements OnInit {
     this.product.listCart(userid).subscribe(res => {
       console.log('Cart Response');
       this.carts = res;
+      
       console.log(this.carts);
     })
 
@@ -80,7 +82,7 @@ export class CartComponent implements OnInit {
 
     }
     else {
-      console.log("Quantity Greater athan 1")
+      console.log("Quantity Greater a than 1")
       this.product.UpdateProductQuantity(item).subscribe(res => {
         console.log('Product Quantity Decreased');
         this.getProductFromCart();
@@ -89,5 +91,7 @@ export class CartComponent implements OnInit {
 
 
   }
+  
+  
 
 }

@@ -21,7 +21,7 @@ len:any;
  
   }
   logout(){
-    localStorage.removeItem('token');
+    localStorage.clear();
     this.router.navigate(['/dashboard']);
   this.showSuccess();
   
