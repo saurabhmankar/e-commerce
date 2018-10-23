@@ -1,39 +1,41 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import {environment} from '../../../../environments/environment'
 
 @Injectable()
 export class ProductService {
+  BaseUrl=environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
   addProduct(data: any): Observable<any> {
-    return this.http.post("http://localhost:10010/addProduct", data);
+    return this.http.post(this.BaseUrl+"/addProduct", data);
   }
 
   listProduct(): Observable<any> {
     return this
       .http
-      .get('http://localhost:10010/listProduct')
+      .get(this.BaseUrl+'/listProduct')
   }
 
   editProduct(data, id): Observable<any> {
 
     return this
       .http
-      .put('http://localhost:10010/editProduct/' + id, data);
+      .put(this.BaseUrl+'/editProduct/' + id, data);
 
   }
 
   delete(id) {
     return this
       .http
-      .delete('http://localhost:10010/deleteProduct/' + id)
+      .delete(this.BaseUrl+'/deleteProduct/' + id)
 
 
   }
   addToCart(data: any): Observable<any> {
-    return this.http.post("http://localhost:10010/addToCart", data);
+    return this.http.post(this.BaseUrl+"/addToCart", data);
 
   }
 
@@ -41,24 +43,24 @@ export class ProductService {
     console.log("Id at service:" + id);
     return this
       .http
-      .get('http://localhost:10010/listCart?id=' + id);
+      .get(this.BaseUrl+'/listCart?id=' + id);
   }
 
   deleteCart(ids) {
     return this
       .http
-      .post('http://localhost:10010/deleteFromCart', ids);
+      .post(this.BaseUrl+'/deleteFromCart', ids);
 
 
   }
   UpdateProductQuantity(item: any): Observable<any> {
-    return this.http.post("http://localhost:10010/UpdateCart", item);
+    return this.http.post(this.BaseUrl+"/UpdateCart", item);
   }
 
 
 
   makeCharge(data: any): Observable<any> {
-    return this.http.post("http://localhost:10010/makeCharge", data);
+    return this.http.post(this.BaseUrl+"/makeCharge", data);
   }
 
 }
