@@ -32,4 +32,14 @@ export class UsersService {
     return this.http.put(this.BaseUrl+"/editUsers/"+id,data);
 
   }
+
+  checkUserMail(data):Observable<any>{
+    console.log("email address",data);
+    return this.http.post(this.BaseUrl+'/checkUser',data);
+  }
+
+  checkUserOtp(data):Observable<any>{
+    console.log("OTP",data);
+    return this.http.post(this.BaseUrl+'/checkUserOtp',data);
+  }
 }

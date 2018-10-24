@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../dashboard/services/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
+
 export class CartComponent implements OnInit {
   carts: any;
   quantityCount: number = 1;
   quantity: number;
+  total:number=0;
 
 
   constructor(private router:Router,private product: ProductService, private toastr: ToastrService) { }
@@ -28,11 +31,23 @@ export class CartComponent implements OnInit {
     this.product.listCart(userid).subscribe(res => {
       console.log('Cart Response');
       this.carts = res;
+      // this.carts.forEach((value,index)=> {
+      //   this.total=+this.carts[index].totalCost;
+      
+      // });
+      this.total=0;
+      this.carts.forEach(element => {
+        this.total=this.total+element.totalCost;
+      });
+    
+      console.log("Total Cost of all Product in cart is"+this.total);
       
       console.log(this.carts);
     })
 
   }
+
+  
 
   Remove(cid) {
     console.log("UserId:" + cid);

@@ -94,7 +94,7 @@
           </div>
         </div>
        
-      
+        <small> <a (click)="openModal2(template2)">Forget Password?</a></small>
         <div class="row">
           <div class="col-md-2">
           <button type="submit" style="margin-left:10%" class="btn btn-success" [disabled]="!loginForm.valid">Login</button>
@@ -106,6 +106,127 @@
     </form>
   </div>
 </ng-template>
+
+<ng-template #template2>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Forgot Password</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="ResetForm" (ngSubmit)="openModal3(template3)">
+        <div class="container-fluid content">
+          <div class="row">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="email_address" formControlName="email" placeholder="Email Address" autofocus required>
+              <div *ngIf="ResetForm.controls['email'].touched && !ResetForm.controls['email'].valid" class="cross-validation-error-message alert alert-danger">  
+                <span *ngIf="ResetForm.controls['email'].hasError('required') ">  
+                    Email is required  
+                    </span>   
+               </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+            <button type="submit" style="margin-left:10%" class="btn btn-success" [disabled]="!ResetForm.valid">Send Mail</button>
+  
+          </div>
+         
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+
+
+
+  <ng-template #template3>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">OTP </h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="OtpForm" (ngSubmit)="openModal4(template4)">
+        <div class="container-fluid content">
+          <div class="row">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="otp" formControlName="otp" placeholder="Enter OTP" autofocus required>
+              <div *ngIf="OtpForm.controls['otp'].touched && !OtpForm.controls['otp'].valid" class="cross-validation-error-message alert alert-danger">  
+                <span *ngIf="OtpForm.controls['otp'].hasError('required') ">  
+                    OTP is required  
+                    </span>   
+               </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+            <button type="submit" style="margin-left:10%" class="btn btn-success" [disabled]="!OtpForm.valid">Submit</button>
+  
+          </div>
+         
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #template4>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Reset Your Password</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              
+          <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="resetPasswordForm" (ngSubmit)="onReset()">
+        <div class="container-fluid content">
+          <div class="row">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="password" formControlName="password" placeholder=" New Password " autofocus required>
+              <div *ngIf="resetPasswordForm.controls['password'].touched && !resetPasswordForm.controls['password'].valid" class="cross-validation-error-message alert alert-danger">  
+                <span *ngIf="resetPasswordForm.controls['password'].hasError('required') ">  
+                    Password is required  
+                    </span>   
+               </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" maxlength="15" id="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" required>
+              <div *ngIf="resetPasswordForm.controls['confirmPassword'].touched && !resetPasswordForm.controls['confirmPassword'].valid" class="cross-validation-error-message alert alert-danger">  
+                <span *ngIf="resetPasswordForm.controls['confirmPassword'].hasError('required') ">  
+                   Confirm Password is required  
+                    </span>   
+               </div>
+            </div>
+          </div>
+         
+          <!-- <small> <a (click)="openModal2(template2)">Forget Password?</a></small> -->
+          <div class="row">
+            <div class="col-md-2">
+            <button type="submit" style="margin-left:10%" class="btn btn-success" [disabled]="!resetPasswordForm.valid">Login</button>
+  
+          </div>
+         
+          </div>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+  
+
+
+
 <p-dialog header="Hello" [(visible)]="display" [modal]="true" [responsive]="true" [width]="350" [minWidth]="200" [minY]="70" 
         [maximizable]="true" [baseZIndex]="10000">
     <span>Welcome Super Admin !
@@ -117,4 +238,5 @@
             <button type="button" pButton icon="pi pi-check" (click)="user()" label="User" class="ui-button-secondary"></button>
         </p-footer>
 </p-dialog>
+
 

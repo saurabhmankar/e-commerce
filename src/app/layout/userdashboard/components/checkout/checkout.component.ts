@@ -1,24 +1,39 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductService } from '../../../dashboard/services/product.service';
 // import { ActivatedRoute } from '@angular/router';
+import {CartComponent} from '../cart/cart.component';
+
+
+// import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.css'],
+  providers:[CartComponent]
 })
 export class CheckoutComponent implements OnInit, AfterViewInit {
   @ViewChild("stripeContainer") stripeContainer: ElementRef;
 cost:any;
-  constructor(private product: ProductService) { }
+totalCost:number=0;
+carts:any;
+total:any;
+
+  constructor(private product: ProductService,private cart:CartComponent) { }
+
   
   ngOnInit() {
+    
   //   this.route.params.subscribe(params => {
   //     this.cost = params["cart.totalCost"];
   //     console.log("Totalcost is:",this.cost);
     
   //  });
+  
+  
   }
+
+  
 
   api_key : string = 'pk_test_priBGObMo4kB7Q8phNrh9ZdW'; // replace me
 
@@ -32,17 +47,38 @@ cost:any;
   error_message = "";
   paymentRequestAvailable : boolean = false;
   
+  
+  
 
   ngAfterViewInit(){
+    // this.route.params.subscribe(params => {
+    // this.totalCost = params["total"];}
+    
+    // )
+    let userid = localStorage.getItem("userid");
+    this.product.listCart(userid).subscribe(res => {
+      console.log('Cart Response');
+      this.carts = res;
+      this.total=0;
+      this.carts.forEach((value,index)=> {
+        this.total=this.total+this.carts[index].totalCost;
+        console.log("TotalCost:"+this.total);
+      
+      });
+    });
+    
+    // console.log("TotalCost out of viewInit:"+this.total)
+    // console.log("TotalCost on checkout"+this.totalCost);
+  
+
+   
+    
+    
 
     this.form = this.stripeContainer.nativeElement.querySelector('form');
-    // console.log(this.form);
+    
     this.resetButton = this.stripeContainer.nativeElement.querySelector('a.reset');
-    // console.log(this.resetButton);
-    // this.error = this.form.querySelector('.error');
-    // console.log(this.error);
-    // this.errorMessage = this.error.querySelector('.message');
-    // console.log(this.errorMessage);
+    
 
     this.stripe = Stripe(this.api_key); // use your test publishable key
 
@@ -188,18 +224,23 @@ cost:any;
     let state    = this.form.querySelector('#example5-state');
     let zip      = this.form.querySelector('#example5-zip');
 
+
     let additionalData = {
       name: name ? name.value : undefined,
       address_line1: address1 ? address1.value : undefined,
       address_city: city ? city.value : undefined,
       address_state: state ? state.value : undefined,
       address_zip: zip ? zip.value : undefined,
+
     };
 
+    console.log("Additional Data",additionalData);
     this.stripe.createToken(this.card, additionalData).then((result) => {
       // Stop loading!
       //o example.classList.remove('submitting');
       this.stripeContainer.nativeElement.classList.remove('submitting');
+      console.log("Result:=======",result);
+      
 
       if (result.token) {
         console.log("Token:",result.token);
@@ -207,20 +248,28 @@ cost:any;
         //o example.querySelector('.token').innerText = result.token.id;
         this.token = result.token.id;
         this.stripeContainer.nativeElement.classList.add('submitted');
+        console.log("TotalCost in finaltoken cost:"+this.total)
+
+        
         let finalToken = {
-          token : this.token 
+          token : this.token ,
+          totalCost:this.total,
+          cart : this.carts,
         }
+        
         console.log("Front Side Token",finalToken);
         this.product.makeCharge(finalToken).subscribe((res: any) => {
         res = res.data;
         console.log("response :: ", res);
 
       })
+      
       } else {
         // Otherwise, un-disable inputs.
         this.enableInputs();
       }
     });
+    
    
     
   }
@@ -271,3 +320,4 @@ cost:any;
   }
 
 }
+
