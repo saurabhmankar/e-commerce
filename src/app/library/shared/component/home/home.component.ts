@@ -124,26 +124,43 @@ export class HomeComponent implements OnInit {
     // this.modalRef.hide();
     console.log("Mail in Reset Form" + JSON.stringify(this.ResetForm.value));
     this.userS.checkUserMail(this.ResetForm.value).subscribe((res) => {
-      this.modalRef.hide();
-      console.log("Mail response",res.email);
-      localStorage.setItem('email',res.email);
-      this.modalRef = this.modalService.show(template3);
+
+      if (res.email == undefined) {
+        this.modalRef.hide();
+        this.toastr.warning('', 'Please enter vailid email !');
+      }
+      else {
+        this.modalRef.hide();
+        console.log("Mail response", res.email);
+        localStorage.setItem('email', res.email);
+        this.toastr.success('Otp has been sent to your mail', 'Please check and enter otp within time limit !');
+
+        this.modalRef = this.modalService.show(template3);
+      }
+
     })
   }
 
   openModal4(template4: TemplateRef<any>) {
     console.log(JSON.stringify(this.OtpForm.value));
-    let item={
-      otp:this.OtpForm.value.otp,
-      email:localStorage.getItem('email')
+    let item = {
+      otp: this.OtpForm.value.otp,
+      email: localStorage.getItem('email')
 
     }
     this.userS.checkUserOtp(item).subscribe((res) => {
-      this.modalRef.hide();
-      console.log("OTP sent response", res);
-      this.modalRef = this.modalService.show(template4);
-      // console.log("email", res[0].email);
-      // localStorage.setItem('email', res[0].email);
+      
+      if (res.length == 0 ) {
+        this.modalRef.hide();
+        this.toastr.warning('Invalid Email Entered !', 'Please enter vailid email !');
+
+      }
+      else {
+        this.modalRef.hide();
+        console.log("OTP sent response", res);
+        this.modalRef = this.modalService.show(template4);
+      }
+
 
     })
   }
@@ -181,31 +198,33 @@ export class HomeComponent implements OnInit {
       }
       this.userS.resetPassword(item).subscribe((res) => {
         console.log("In Reset Password Response");
-        if(res){
+        if (res) {
           let item = {
             email: localStorage.getItem('email')
           }
-          this.userS.deleteOtp(item).subscribe((data)=>{
-            console.log("OTP Delete Response",data);
+          this.userS.deleteOtp(item).subscribe((data) => {
+            console.log("OTP Delete Response", data);
           })
         }
         console.log("OTP sent response", res);
         this.modalRef.hide();
         localStorage.clear();
+        this.toastr.success('Password Reset Successfully !', 'Please login again !');
+
       })
     }
 
   }
 
 
-  onFinished(){
+  onFinished() {
     console.log("Time is over");
 
     let item = {
-      email : localStorage.getItem("email")
+      email: localStorage.getItem("email")
     }
-    this.userS.deleteOtp(item).subscribe((res)=>{
-      console.log("Response",res);
+    this.userS.deleteOtp(item).subscribe((res) => {
+      console.log("Response", res);
       this.modalRef.hide();
 
 
