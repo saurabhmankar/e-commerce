@@ -25,6 +25,7 @@
     "core-js": "^2.4.1",
     "croppie": "^2.6.2",
     "ngx-bootstrap": "^3.0.1",
+    "ngx-countdown": "^3.1.0",
     "ngx-croppie": "^1.1.0",
     "ngx-img-cropper": "^0.10.4",
     "ngx-toastr": "^9.1.0",

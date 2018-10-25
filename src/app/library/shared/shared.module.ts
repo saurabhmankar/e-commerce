@@ -5,11 +5,14 @@ import { CommonModule } from '@angular/common';
 import { GlobalHeaderComponent } from './component/global-header/global-header.component';
 import { GlobalFooterComponent } from './component/global-footer/global-footer.component';
 import { GlobalContentComponent } from './component/global-content/global-content.component';
+// import { CountdownTimerModule } from 'ngx-countdown-timer';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    // CountdownTimerModule.forRoot()
+
   
   ],
   declarations: [ GlobalHeaderComponent, GlobalFooterComponent, GlobalContentComponent]

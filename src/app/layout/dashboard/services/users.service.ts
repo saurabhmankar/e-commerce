@@ -36,10 +36,22 @@ export class UsersService {
   checkUserMail(data):Observable<any>{
     console.log("email address",data);
     return this.http.post(this.BaseUrl+'/checkUser',data);
+    
   }
 
   checkUserOtp(data):Observable<any>{
     console.log("OTP",data);
     return this.http.post(this.BaseUrl+'/checkUserOtp',data);
   }
+
+  resetPassword(data):Observable<any>{
+    return this.http.post(this.BaseUrl+'/resetPassword',data);
+
+  }
+
+  deleteOtp(data):Observable<any>{
+    return this.http.post(this.BaseUrl+'/deleteOtp',data);
+
+  }
+
 }

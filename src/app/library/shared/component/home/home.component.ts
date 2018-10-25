@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   loginForm: FormGroup
   ResetForm: FormGroup
   OtpForm: FormGroup
-  resetPasswordForm : FormGroup
+  resetPasswordForm: FormGroup
   modalRef: BsModalRef;
   display: boolean = false;
 
@@ -125,17 +125,25 @@ export class HomeComponent implements OnInit {
     console.log("Mail in Reset Form" + JSON.stringify(this.ResetForm.value));
     this.userS.checkUserMail(this.ResetForm.value).subscribe((res) => {
       this.modalRef.hide();
-      console.log(res);
+      console.log("Mail response",res.email);
+      localStorage.setItem('email',res.email);
       this.modalRef = this.modalService.show(template3);
     })
   }
 
   openModal4(template4: TemplateRef<any>) {
     console.log(JSON.stringify(this.OtpForm.value));
-    this.userS.checkUserOtp(this.OtpForm.value).subscribe((res) => {
-      this.modalRef.hide(); 
+    let item={
+      otp:this.OtpForm.value.otp,
+      email:localStorage.getItem('email')
+
+    }
+    this.userS.checkUserOtp(item).subscribe((res) => {
+      this.modalRef.hide();
       console.log("OTP sent response", res);
       this.modalRef = this.modalService.show(template4);
+      // console.log("email", res[0].email);
+      // localStorage.setItem('email', res[0].email);
 
     })
   }
@@ -164,5 +172,33 @@ export class HomeComponent implements OnInit {
 
   }
 
+  onReset() {
+    console.log("Form Value", this.resetPasswordForm.value);
+    if (this.resetPasswordForm.value.password == this.resetPasswordForm.value.confirmPassword) {
+      let item = {
+        pwd: this.resetPasswordForm.value.password,
+        email: localStorage.getItem('email')
+      }
+      this.userS.resetPassword(item).subscribe((res) => {
+        console.log("OTP sent response", res);
+        localStorage.clear();
+        this.modalRef.hide();
+      })
+    }
+
+  }
+
+
+  onFinished(){
+    console.log("Time is over");
+
+    let item = {
+      email : localStorage.getItem("email")
+    }
+    this.userS.deleteOtp(item).subscribe((res)=>{
+      console.log("Response");
+
+    })
+  }
 
 }

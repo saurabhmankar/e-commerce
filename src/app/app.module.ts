@@ -16,11 +16,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastModule} from '../../node_modules/primeng/toast';
 import {MessageService} from '../../node_modules/primeng/api';
 import { SharedModule } from './library/shared/shared.module';
- 
+import { CountdownModule } from "ngx-countdown";
 import { ToastrModule } from 'ngx-toastr';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
-
 
 @NgModule({
   declarations: [
@@ -39,7 +38,9 @@ import {ButtonModule} from 'primeng/button';
     ToastModule,
   BrowserAnimationsModule,
   SharedModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    CountdownModule,
+
     
   ],
   providers: [AuthService,AuthGuardService,MessageService,

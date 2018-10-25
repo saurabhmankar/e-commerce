@@ -163,7 +163,19 @@
                     OTP is required  
                     </span>   
                </div>
+               <h1>
+                Timer
+              </h1>
+              Timer mode:
+              <countdown [config]="{leftTime: 10}" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
+               
+              <!-- Countdown:
+              <countdown-timer [end]="'30'"></countdown-timer>
+               
+              Countdown with zero trigger:
+              <countdown-timer (zeroTrigger)="yourOwnFunction()" [end]="'30'"></countdown-timer> -->
             </div>
+
             
           </div>
           <div class="row">
@@ -214,7 +226,7 @@
           <!-- <small> <a (click)="openModal2(template2)">Forget Password?</a></small> -->
           <div class="row">
             <div class="col-md-2">
-            <button type="submit" style="margin-left:10%" class="btn btn-success" [disabled]="!resetPasswordForm.valid">Login</button>
+            <button type="submit" style="margin-left:10%" class="btn btn-success" [disabled]="!resetPasswordForm.valid">Reset</button>
   
           </div>
          
