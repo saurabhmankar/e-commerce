@@ -180,9 +180,18 @@ export class HomeComponent implements OnInit {
         email: localStorage.getItem('email')
       }
       this.userS.resetPassword(item).subscribe((res) => {
+        console.log("In Reset Password Response");
+        if(res){
+          let item = {
+            email: localStorage.getItem('email')
+          }
+          this.userS.deleteOtp(item).subscribe((data)=>{
+            console.log("OTP Delete Response",data);
+          })
+        }
         console.log("OTP sent response", res);
-        localStorage.clear();
         this.modalRef.hide();
+        localStorage.clear();
       })
     }
 
@@ -196,7 +205,9 @@ export class HomeComponent implements OnInit {
       email : localStorage.getItem("email")
     }
     this.userS.deleteOtp(item).subscribe((res)=>{
-      console.log("Response");
+      console.log("Response",res);
+      this.modalRef.hide();
+
 
     })
   }
