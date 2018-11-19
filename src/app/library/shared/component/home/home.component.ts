@@ -33,11 +33,17 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.auth.isLoggednIn()) {
+      (document.getElementById('loginBtn') as HTMLElement).style.visibility = 'hidden';
+      (document.getElementById('signUpBtn') as HTMLElement).style.visibility = 'hidden';
+
+    }
     this.loginForm = new FormGroup({
 
       "email": new FormControl('', [
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+          + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
       ]),
       "password": new FormControl('', [
         Validators.required])
@@ -48,7 +54,8 @@ export class HomeComponent implements OnInit {
 
       "email": new FormControl('', [
         Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        Validators.pattern("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+          + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
       ])
     })
     this.OtpForm = new FormGroup({
@@ -86,29 +93,40 @@ export class HomeComponent implements OnInit {
   onLogin() {
     console.log(this.loginForm.value)
     this.auth.login(this.loginForm.value).subscribe(res => {
-      console.log("Response", res);
-      var user = res.userData.first_name;
-      var role = res.role;
-      var userid = res.userData.roleid;
-      let token = res.token;
-      console.log(role);
-      this.modalRef.hide();
-      this.showSuccess();
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', user);
-      localStorage.setItem('userid', userid);
-      var logintoken = localStorage.getItem("Token");
-      console.log(logintoken);
-
-      if (role == "user") {
-        this.router.navigate(['/userdashboard/userdashboard'])
-
-      } else if (role == "admin") {
-        this.router.navigate(['/dashboard'])
+      console.log("Response", res.userData.confirmMail);
+      if (res.msg == 'error') {
+        this.toastr.error('Login Failed', 'Incorrect email or password');
+        this.modalRef.hide();
       }
-      else if (role == "superadmin") {
-        this.showDialog();
+      else if (res.userData.confirmMail == true) {
+        var user = res.userData.first_name;
+        var role = res.role;
+        sessionStorage.setItem('role', role);
+        var userid = res.userData.roleid;
+        let token = res.token;
+        console.log(role);
+        this.modalRef.hide();
+        this.showSuccess();
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', user);
+        localStorage.setItem('userid', userid);
+        var logintoken = localStorage.getItem("Token");
+        console.log(logintoken);
+        if (role == "user") {
+          this.router.navigate(['/userdashboard/userdashboard'])
+
+        } else if (role == "admin") {
+          this.router.navigate(['/dashboard'])
+        }
+        else if (role == "superadmin") {
+          this.showDialog();
+        }
       }
+      else{
+        this.toastr.warning("Please confirm your mail id","Aap ka din shubh ho");
+      }
+
+
     })
   }
 
@@ -126,7 +144,7 @@ export class HomeComponent implements OnInit {
     this.userS.checkUserMail(this.ResetForm.value).subscribe((res) => {
 
       if (res.email == undefined) {
-        this.modalRef.hide();
+        // this.modalRef.hide();
         this.toastr.warning('', 'Please enter vailid email !');
       }
       else {
@@ -149,8 +167,8 @@ export class HomeComponent implements OnInit {
 
     }
     this.userS.checkUserOtp(item).subscribe((res) => {
-      
-      if (res.length == 0 ) {
+
+      if (res.length == 0) {
         this.modalRef.hide();
         this.toastr.warning('Invalid Email Entered !', 'Please enter vailid email !');
 

@@ -3,6 +3,8 @@ import { BlogService } from '../../../dashboard/services/blog.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup,Validators} from '@angular/forms';
 import {FormBuilder} from "@angular/forms";
+import { resetApplicationState } from '@angular/core/src/render3/instructions';
+import { resolve } from 'q';
 
 @Component({
   selector: 'app-blogdetail',
@@ -46,6 +48,7 @@ handleCancel(event) {
     }
     this.blog.addComment(data).subscribe(res=>{
       console.log(res);
+      
     })
     console.log(data);
     this.getdata();
@@ -54,6 +57,8 @@ handleCancel(event) {
 
   ngOnInit() {
     this.getdata();
+
+  
     
   }
  getdata(){
@@ -64,6 +69,7 @@ handleCancel(event) {
       var blogs = res;
       this.b = blogs[0];
     console.log(this.b.BlogImage);
+    
 
 
 

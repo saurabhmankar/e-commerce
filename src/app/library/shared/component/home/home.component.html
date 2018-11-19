@@ -4,7 +4,7 @@
         
   <div class="container-fluid">
       <div class="row">
-          <img src="/assets/images/backg1.jpg" alt="'/">
+          <img src="/assets/images/musicback2.jpg"  alt="'/">
           <div class="content">
               <h3>
                   <b>E-Commerce</b>
@@ -12,7 +12,7 @@
 
               <nav>
                   <ul>
-                      <li>
+                      <!-- <li>
                           <a href="#">
                               <b>About Us</b>
                           </a>
@@ -27,12 +27,12 @@
                           <a href="#">
                               <b>FAQ</b>
                           </a>
-                      </li>
+                      </li> -->
                       <li style="float: right;">
-                        <button class="btn btn-default" routerLink="/SignUp" type="button">Sign Up</button>
+                        <button class="btn btn-default" id="signUpBtn" routerLink="/SignUp" type="button">Sign Up</button>
                     </li>
                       <li style="float: right;">
-                        <button type="button" class="btn btn-default" (click)="openModal(template)">
+                        <button type="button" id="loginBtn" class="btn btn-default" (click)="openModal(template)">
                           Login
                         </button>
                       </li>

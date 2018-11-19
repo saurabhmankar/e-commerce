@@ -15,6 +15,8 @@ export class CartComponent implements OnInit {
   quantityCount: number = 1;
   quantity: number;
   total:number=0;
+  
+
 
 
   constructor(private router:Router,private product: ProductService, private toastr: ToastrService) { }
@@ -29,20 +31,34 @@ export class CartComponent implements OnInit {
   getProductFromCart() {
     var userid = localStorage.getItem("userid");
     this.product.listCart(userid).subscribe(res => {
-      console.log('Cart Response');
+      console.log('Cart Response',res);
+      if(res.length==0){
+      let  btn = document.getElementById("checkout") as HTMLButtonElement;
+      let tcost =document.getElementById("tcost") as HTMLElement;
+      let emptyCart =document.getElementById("emptyCart") as HTMLElement;
+
+
+        console.log("getting [] in response");
+        btn.style.visibility='hidden';
+        tcost.style.visibility='hidden';
+        emptyCart.style.visibility='visible';
+        
+      }
       this.carts = res;
       // this.carts.forEach((value,index)=> {
       //   this.total=+this.carts[index].totalCost;
       
       // });
+      
       this.total=0;
       this.carts.forEach(element => {
         this.total=this.total+element.totalCost;
       });
+      
     
       console.log("Total Cost of all Product in cart is"+this.total);
       
-      console.log(this.carts);
+      
     })
 
   }

@@ -17,20 +17,31 @@ export class AuthService {
  }
 
  login(data:any):Observable<any>{
-  console.log("fbrhfbnj",data);
+  // console.log("fbrhfbnj",data);
   return this.http.post(this.BaseUrl+'/login',data);
 }
 
 getToken() {
   return localStorage.getItem("token")
 }
+isAdminLoggednIn() {
+  if(sessionStorage.getItem('role')=='admin'||sessionStorage.getItem('role')=='superadmin' && this.getToken() !== null){
+  return true
+  }else{
+    return false
+  }
+}
+isUserLoggednIn() {
+  if(sessionStorage.getItem('role')=='user'||sessionStorage.getItem('role')=='superadmin' && this.getToken() !== null){
+    return true
+    }else{
+      return false
+    }
+}
 isLoggednIn() {
   return this.getToken() !== null;
 }
-// checkUserMail(data):Observable<any>{
-//   console.log("email address",data);
-//   return this.http.post(this.BaseUrl+'/checkUser',data);
-// }
+
 
  
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductService } from '../../../dashboard/services/product.service';
 // import { ActivatedRoute } from '@angular/router';
-import {CartComponent} from '../cart/cart.component';
+import { CartComponent } from '../cart/cart.component';
+import { Router } from '@angular/router'
 
 
 // import { ActivatedRoute } from '@angular/router';
@@ -10,75 +11,75 @@ import {CartComponent} from '../cart/cart.component';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
-  providers:[CartComponent]
+  providers: [CartComponent]
 })
 export class CheckoutComponent implements OnInit, AfterViewInit {
   @ViewChild("stripeContainer") stripeContainer: ElementRef;
-cost:any;
-totalCost:number=0;
-carts:any;
-total:any;
+  cost: any;
+  totalCost: number = 0;
+  carts: any;
+  total: any;
 
-  constructor(private product: ProductService,private cart:CartComponent) { }
+  constructor(private product: ProductService, private cart: CartComponent, private router: Router) { }
 
-  
+
   ngOnInit() {
-    
-  //   this.route.params.subscribe(params => {
-  //     this.cost = params["cart.totalCost"];
-  //     console.log("Totalcost is:",this.cost);
-    
-  //  });
-  
-  
+
+    //   this.route.params.subscribe(params => {
+    //     this.cost = params["cart.totalCost"];
+    //     console.log("Totalcost is:",this.cost);
+
+    //  });
+
+
   }
 
-  
 
-  api_key : string = 'pk_test_priBGObMo4kB7Q8phNrh9ZdW'; // replace me
 
-  card : any;
-  stripe : any;
-  token : string;
-  elements : any;
-  form : any;
-  resetButton : any;
-  errorvisible : boolean = false;
+  api_key: string = 'pk_test_priBGObMo4kB7Q8phNrh9ZdW'; // replace me
+
+  card: any;
+  stripe: any;
+  token: string;
+  elements: any;
+  form: any;
+  resetButton: any;
+  errorvisible: boolean = false;
   error_message = "";
-  paymentRequestAvailable : boolean = false;
-  
-  
-  
+  paymentRequestAvailable: boolean = false;
 
-  ngAfterViewInit(){
+
+
+
+  ngAfterViewInit() {
     // this.route.params.subscribe(params => {
     // this.totalCost = params["total"];}
-    
+
     // )
     let userid = localStorage.getItem("userid");
     this.product.listCart(userid).subscribe(res => {
       console.log('Cart Response');
       this.carts = res;
-      this.total=0;
-      this.carts.forEach((value,index)=> {
-        this.total=this.total+this.carts[index].totalCost;
-        console.log("TotalCost:"+this.total);
-      
+      this.total = 0;
+      this.carts.forEach((value, index) => {
+        this.total = this.total + this.carts[index].totalCost;
+        console.log("TotalCost:" + this.total);
+
       });
     });
-    
+
     // console.log("TotalCost out of viewInit:"+this.total)
     // console.log("TotalCost on checkout"+this.totalCost);
-  
 
-   
-    
-    
+
+
+
+
 
     this.form = this.stripeContainer.nativeElement.querySelector('form');
-    
+
     this.resetButton = this.stripeContainer.nativeElement.querySelector('a.reset');
-    
+
 
     this.stripe = Stripe(this.api_key); // use your test publishable key
 
@@ -169,14 +170,14 @@ total:any;
       this.cardOnChange(event);
     });
 
-    this.form.addEventListener('submit', (e) =>  {
+    this.form.addEventListener('submit', (e) => {
       e.preventDefault(); // this needs to be here, not in onSubmit for some reason.
       this.onSubmit(e);
     });
 
   } // END ngAfterViewInit //
 
-  cardOnChange(event){
+  cardOnChange(event) {
     var savedErrors = {};
     // console.log("card.on change()");
     if (event.error) {
@@ -209,7 +210,7 @@ total:any;
     }
   }
 
-  onSubmit(e){
+  onSubmit(e) {
     // console.log("onSubmit(e)", e);
     e.preventDefault();
 
@@ -218,11 +219,11 @@ total:any;
 
     this.disableInputs()
 
-    let name     = this.form.querySelector('#example5-name');
+    let name = this.form.querySelector('#example5-name');
     let address1 = this.form.querySelector('#example5-address');
-    let city     = this.form.querySelector('#example5-city');
-    let state    = this.form.querySelector('#example5-state');
-    let zip      = this.form.querySelector('#example5-zip');
+    let city = this.form.querySelector('#example5-city');
+    let state = this.form.querySelector('#example5-state');
+    let zip = this.form.querySelector('#example5-zip');
 
 
     let additionalData = {
@@ -234,48 +235,51 @@ total:any;
 
     };
 
-    console.log("Additional Data",additionalData);
+    console.log("Additional Data", additionalData);
     this.stripe.createToken(this.card, additionalData).then((result) => {
       // Stop loading!
       //o example.classList.remove('submitting');
       this.stripeContainer.nativeElement.classList.remove('submitting');
-      console.log("Result:=======",result);
-      
+      console.log("Result:=======", result);
+
 
       if (result.token) {
-        console.log("Token:",result.token);
+        this.router.navigate(['userdashboard/userdashboard/cart']);
+        console.log("Token:", result.token);
         // If we received a token, show the token ID.
         //o example.querySelector('.token').innerText = result.token.id;
         this.token = result.token.id;
         this.stripeContainer.nativeElement.classList.add('submitted');
-        console.log("TotalCost in finaltoken cost:"+this.total)
+        console.log("TotalCost in finaltoken cost:" + this.total)
 
-        
+
         let finalToken = {
-          token : this.token ,
-          totalCost:this.total,
-          cart : this.carts,
+          token: this.token,
+          totalCost: this.total,
+          cart: this.carts,
         }
-        
-        console.log("Front Side Token",finalToken);
-        this.product.makeCharge(finalToken).subscribe((res: any) => {
-        res = res.data;
-        console.log("response :: ", res);
 
-      })
-      
+        console.log("Front Side Token", finalToken);
+        this.product.makeCharge(finalToken).subscribe((res: any) => {
+          res = res.data;
+          console.log("response :: ", res);
+
+
+
+        })
+
       } else {
         // Otherwise, un-disable inputs.
         this.enableInputs();
       }
     });
-    
-   
-    
-  }
-  
 
-  onReset(e){
+
+
+  }
+
+
+  onReset(e) {
     // console.log("onReset(e)", e);
 
     e.preventDefault();
@@ -297,7 +301,7 @@ total:any;
     this.stripeContainer.nativeElement.classList.remove('submitted');
   }
 
-  enableInputs(){
+  enableInputs() {
     Array.prototype.forEach.call(
       this.form.querySelectorAll(
         "input[type='text'], input[type='email'], input[type='tel']"
@@ -307,7 +311,7 @@ total:any;
       }
     );
   }
-  
+
   disableInputs() {
     Array.prototype.forEach.call(
       this.form.querySelectorAll(

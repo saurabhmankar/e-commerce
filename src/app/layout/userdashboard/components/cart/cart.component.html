@@ -19,6 +19,7 @@
     </div>
     
   </div>
-  <p>Total cost :{{this.total}}</p>
-  <button [routerLink]="['/userdashboard/userdashboard/checkout']">Proceed to Checkout</button>
+  <p id="tcost">Total cost :{{this.total}}</p>
+  <button [routerLink]="['/userdashboard/userdashboard/checkout']" id="checkout">Proceed to Checkout</button>
+  <img src='../../../../../assets/images/empty-cart.jpg' id='emptyCart' style='visibility: hidden'>
 </div>

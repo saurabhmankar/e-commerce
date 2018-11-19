@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { GlobalHeaderComponent } from './component/global-header/global-header.component';
 import { GlobalFooterComponent } from './component/global-footer/global-footer.component';
 import { GlobalContentComponent } from './component/global-content/global-content.component';
+import { ConfirmationComponent } from './component/confirmation/confirmation.component';
 // import { CountdownTimerModule } from 'ngx-countdown-timer';
 
 
@@ -15,6 +16,6 @@ import { GlobalContentComponent } from './component/global-content/global-conten
 
   
   ],
-  declarations: [ GlobalHeaderComponent, GlobalFooterComponent, GlobalContentComponent]
+  declarations: [ GlobalHeaderComponent, GlobalFooterComponent, GlobalContentComponent, ConfirmationComponent]
 })
 export class SharedModule { }

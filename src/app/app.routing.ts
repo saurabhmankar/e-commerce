@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './library/shared/component/home/home.component';
+import {ConfirmationComponent} from './library/shared/component/confirmation/confirmation.component';
 
 // import { CommonModule } from '@angular/common';
 
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: "",
     component: HomeComponent
+  },
+  {
+    path: "confirmation",
+    component: ConfirmationComponent
   },
   {
     path: "app",
@@ -37,7 +42,7 @@ const routes: Routes = [
     path: 'dashboard',loadChildren:'./layout/layout.module#LayoutModule',canActivate: [AuthGuardService]
   },
   {
-    path: 'userdashboard',loadChildren:'./layout/layout.module#LayoutModule',canActivate: [AuthGuardService]
+    path: 'userdashboard',loadChildren:'./layout/layout.module#LayoutModule',canActivateChild: [AuthGuardService]
   },
  
 

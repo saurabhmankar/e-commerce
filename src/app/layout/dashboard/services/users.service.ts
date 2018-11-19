@@ -53,5 +53,9 @@ export class UsersService {
     return this.http.post(this.BaseUrl+'/deleteOtp',data);
 
   }
+  confirmMail(data):Observable<any>{
+    console.log("Confirm data",data);
+    return this.http.get(this.BaseUrl+'/confirmMail/'+data);
 
+  }
 }
