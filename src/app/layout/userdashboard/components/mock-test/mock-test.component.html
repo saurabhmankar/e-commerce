@@ -1,0 +1,41 @@
+<app-userdashboard></app-userdashboard>
+<div class="mainbody">
+    <div class="container">
+        <div class="row">
+            <div id="timer">
+                <h4>CountDown:</h4>
+                <img src="../../../../../assets/images/animated-clock-image-0174.gif">
+                <h2>
+                    <countdown class="mock" [config]="{leftTime:300}" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
+                </h2>
+            </div>
+            <h3 id="totalq" align="center">Total Questions:{{len}}</h3>
+        </div>
+    </div>
+    <div id="score" style='visibility:hidden'>
+        <h1 align="center">Your Final Score is :{{score}}</h1>
+        <img src="../../../../../assets/images/animated-fireworks-image-0065.gif">
+        <img src="../../../../../assets/images/animated-fireworks-image-0065.gif">
+        <img src="../../../../../assets/images/animated-fireworks-image-0065.gif">
+        <img src="../../../../../assets/images/animated-fireworks-image-0065.gif">
+    </div>
+    <button id="submit" class="btn btn-lg btn-success" style='visibility:hidden' (click)="submit()">Submit</button>
+
+    <body>
+        <div class="mock" id="mock" oncontextmenu="return false;">
+
+            <p id="qno">QUE:{{i+1}}</p>
+            <h3 class="Que">{{que[i].que}} ?</h3>
+            <br>
+            <input type="radio" id="opt1" name="options" value="{{que[i].option1}}">{{que[i].option1}}
+            <br>
+            <input type="radio" id="opt2" name="options" value="{{que[i].option2}}">{{que[i].option2}}
+            <br>
+            <input type="radio" id="opt3" name="options" value="{{que[i].option3}}">{{que[i].option3}}
+            <br>
+            <input type="radio" id="opt4" name="options" value="{{que[i].option4}}"> {{que[i].option4}}
+            <br>
+            <button id="next" class="btn btn-lg btn-info" (click)="next()">Next</button>
+        </div>
+    </body>
+</div>

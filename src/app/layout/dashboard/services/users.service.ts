@@ -11,6 +11,11 @@ export class UsersService {
   constructor(private http :HttpClient, private router: Router) { }
  BaseUrl=environment.baseUrl;
  
+ addQue(data:any):Observable<any>{
+  return this.http.post(this.BaseUrl+"/addQue",data);
+
+}
+
   addUsers(data:any):Observable<any>{
     return this.http.post(this.BaseUrl+"/addUsers",data);
 
@@ -57,5 +62,9 @@ export class UsersService {
     console.log("Confirm data",data);
     return this.http.get(this.BaseUrl+'/confirmMail/'+data);
 
+  }
+
+  getQuestions():Observable<any>{
+    return this.http.get(this.BaseUrl+'/listQue');
   }
 }

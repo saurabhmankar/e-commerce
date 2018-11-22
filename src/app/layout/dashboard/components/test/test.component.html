@@ -1,0 +1,55 @@
+<app-dashboard></app-dashboard>
+<div class='test'>
+
+
+<div class="justify-content-centre ">
+  <div class="test-form">
+    <div class="card">
+      <div class="card-header heading">
+        <h2>Add Questions</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+          <div class="container-fluid">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="que" formControlName="que" placeholder="Question">
+              
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="option1" formControlName="option1" placeholder="Option 1">
+              
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" id="option2" formControlName="option2" placeholder="Option 2">
+              
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" type="text" id="option3" formControlName="option3" placeholder="Option 3">
+             </div>
+             <div class="form-group">
+              <input type="text" class="form-control input-lg" type="text" id="option4" formControlName="option4" placeholder="option 4">
+             </div>
+             <div class="form-group">
+              <input type="text" class="form-control input-lg" type="text" id='ans' formControlName="ans" placeholder="Correct Answer">
+             </div>
+           
+           
+
+          </div>
+          <div class="row final">
+            <div class="col-md-1">
+              <button type="submit" style="margin-left:50%" id="submitbtn1" class="btn btn-primary" [disabled]="!testForm.valid">ADD</button>
+            </div>
+
+
+          </div>
+
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+  [disabled]="!registrationForm.valid" -->

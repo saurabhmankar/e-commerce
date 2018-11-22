@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../../dashboard/services/blog.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup,Validators} from '@angular/forms';
-import {FormBuilder} from "@angular/forms";
-import { resetApplicationState } from '@angular/core/src/render3/instructions';
-import { resolve } from 'q';
+
 
 @Component({
   selector: 'app-blogdetail',

@@ -94,6 +94,7 @@ export class HomeComponent implements OnInit {
     console.log(this.loginForm.value)
     this.auth.login(this.loginForm.value).subscribe(res => {
       console.log("Response", res.userData.confirmMail);
+      console.log("Response==========",res);
       if (res.msg == 'error') {
         this.toastr.error('Login Failed', 'Incorrect email or password');
         this.modalRef.hide();

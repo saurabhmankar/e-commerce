@@ -14,6 +14,7 @@ import {TooltipModule} from 'primeng/tooltip';
 import { AddBlogComponent } from './components/blog/add-blog/add-blog.component';
 import { ListBlogComponent } from './components/blog/list-blog/list-blog.component';
 import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.component';
+import { TestComponent } from './components/test/test.component';
 
 const routes :Routes =[
   {path:'', component:DashboardComponent},
@@ -26,6 +27,7 @@ const routes :Routes =[
   {path:'addBlog', component:AddBlogComponent},
   {path:'listBlog', component:ListBlogComponent},
   {path:'editBlog/:id', component:EditBlogComponent},
+  {path:'test', component:TestComponent},
 
 ]
 @NgModule({

@@ -14,14 +14,18 @@ import { ToastrModule } from 'ngx-toastr';
 import { CartComponent } from './components/cart/cart.component';
 import {SpinnerModule} from 'primeng/spinner';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MockTestComponent } from './components/mock-test/mock-test.component';
+import { UsersService } from '../dashboard/services/users.service';
+import { CountdownModule } from "ngx-countdown";
+
 
 
 @NgModule({
   imports: [
     CommonModule,UserdashboardRoutingModule,CardModule,RatingModule,ReactiveFormsModule,FormsModule,ToastrModule,SpinnerModule
-  ],
-  declarations: [UserdashboardComponent, ShowproductsComponent, ShowblogsComponent, BlogdetailComponent, CartComponent, CheckoutComponent],
-  providers:[ProductService,BlogService]
+,CountdownModule  ],
+  declarations: [UserdashboardComponent, ShowproductsComponent, ShowblogsComponent, BlogdetailComponent, CartComponent, CheckoutComponent, MockTestComponent],
+  providers:[ProductService,BlogService,UsersService]
 })
 export class UserdashboardModule { 
   

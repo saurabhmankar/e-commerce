@@ -1,0 +1,54 @@
+.mock{
+    margin-left:12.5%;margin-right: 2%
+}
+.mainbody{
+    margin-left:12.5%;margin-right: 2%;
+    border: 5px solid rgb(69, 35, 219);
+    border-radius: 10px;
+}
+#submit{
+    margin-left:50%;
+}
+#next{
+    margin-left:60%;
+}
+#score{
+    margin-left:10%;margin-right: 2%
+}
+h1{
+    margin-left:12.5%;margin-right: 2%;
+    border: 5px solid rgb(214, 34, 34);
+    border-radius: 10px;
+}
+h4{
+    margin-left:12.5%;margin-right: 2%;
+    
+}
+h2{
+    margin-left:12.5%;margin-right: 2%;
+    position: relative;
+    
+}
+
+h3{
+    margin-left:12.5%;margin-right: 2%;
+    position: relative;
+    top: 18px;
+    left: 10px;
+    
+}
+.Que{
+    margin-left:12.5%;margin-right: 2%;
+    border: 5px solid rgb(34, 192, 219);
+    border-radius: 10px;
+}
+img {
+    margin-left:12.5%;margin-right: 2%;
+    /* float: left; */
+    width: 100px;
+    height: 100px;
+    /* background: #555; */
+  }
+  
+  
+  
