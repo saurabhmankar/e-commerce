@@ -18,16 +18,7 @@ const routes: Routes = [
     path: "confirmation",
     component: ConfirmationComponent
   },
-  {
-    path: "app",
-    component: AppComponent,
-    children: [
-      {
-        path: "",
-        loadChildren: "./areas/users/users.module#UsersModule"
-      }
-    ]
-  },
+  
   {
     path: "SignUp",
     loadChildren: './library/auth/auth.module#AuthModule'

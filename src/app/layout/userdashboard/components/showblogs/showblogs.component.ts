@@ -7,7 +7,7 @@ import { BlogService } from '../../../dashboard/services/blog.service';
   styleUrls: ['./showblogs.component.css']
 })
 export class ShowblogsComponent implements OnInit {
-  blogs:any;
+  public blogs:any;
    count = 1;
    setColor(btn, color) {
       var property = document.getElementById(btn);
@@ -21,7 +21,7 @@ export class ShowblogsComponent implements OnInit {
       }
   }
 
-  constructor(private blog:BlogService) { }
+  constructor(public blog:BlogService) { }
 
   ngOnInit() {
       this.getDetails()
